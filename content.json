@@ -20,7 +20,7 @@
 			"schoolCommand": "$ cat formation.txt",
 			"school": "Ecole Nationale d'Informatique (ENI) Fianarantsoa",
 			"level": "Ingéniérie Logicielle & Systèmes d'Information — L2",
-			"bio": "Passionné par le développement logiciel et la conception de bases de données, je construis des applications desktop et web, de la modélisation des données jusqu'à l'interface utilisateur. Complète cette présentation avec tes propres mots.",
+			"bio": "Salut, moi c'est Rianala, mais on m'appelle Riah. Je suis passionné par le développement logiciel et la conception de bases de données, je construis des applications desktop et web, de la modélisation des données jusqu'à l'interface utilisateur.",
 			"heroImages": [
 				"assets/bg-hero/bdd.png",
 				"assets/bg-hero/code1.png",
@@ -65,10 +65,10 @@
                 "Architecture sécurisée avec transactions SQL et persistance via Dapper"
             ],
             "contributors": [
-                { "name": "Rianala Andriamanjanjara", "github": "https://github.com/RiahM" },
-                { "name": "Fy Haritra", "github": "https://github.com/haritra7159-bit" },
-                { "name": "Alinot", "github": "https://github.com/alinotandrianjohany-sys" },
-                { "name": "Sylvia", "github": "https://github.com/sylviaandriamahandry-maker" }
+                { "name": "ANDRIAMANANJARA Rianala Masinjaka", "github": "https://github.com/RiahAndria" },
+                { "name": "ANDRIANARISOA Aina Fy Haritra", "github": "https://github.com/haritra7159-bit" },
+                { "name": "ANDRIANJOHANY Narindraniaina Alinot", "github": "https://github.com/alinotandrianjohany-sys" },
+                { "name": "ANDRIAMAHANDRY Heriniaina Marie Sylvia", "github": "https://github.com/sylviaandriamahandry-maker" }
             ],
             "preview": "assets/Gestion-Patients/dossier.png",
             "gallery": [
@@ -84,12 +84,12 @@
         },
         "gestion-financiere": {
             "title": "Gestion Financière",
-            "meta": "Projet scolaire — C# / WPF — SQLite",
+            "meta": "Projet personnel — C# / WPF — SQLite",
             "type": "school_project",
             "stack": "C# + .NET + WPF + SQLite + ClosedXML + QuestPDF",
             "status": "in_progress",
-            "context": "Développé dans le cadre d'un projet universitaire visant à concevoir une application de bureau autonome et structurée, axée sur la gestion de données locales et l'interopérabilité (Excel/PDF).",
-            "description": "Application desktop de gestion financière personnelle et professionnelle. Elle permet de suivre les flux de trésorerie, d'organiser les opérations via une hiérarchie de rubriques, d'analyser les tendances mensuelles/annuelles et d'interagir nativement avec des fichiers Excel et PDF.",
+            "context": "Développé à la demande d'un utilisateur souhaitant sun outil de gestion des finances ménagères, avec suivi des flux quotidiens et graphiques permettant d'analyser l'évolution financière dans le but d'ajuster ses dépenses.",
+            "description": "Application desktop de gestion financière personnelle. Elle permet de suivre les flux de trésorerie, d'organiser les opérations via une hiérarchie de rubriques, d'analyser les tendances mensuelles/annuelles et d'interagir nativement avec des fichiers Excel et PDF.",
             "features": [
                 "Suivi unifié des entrées et sorties d'argent avec historique des modifications",
                 "Classement hiérarchique des opérations par rubriques et sous-rubriques",
@@ -99,7 +99,7 @@
                 "Stockage local autonome et sécurisé via une base de données SQLite"
             ],
             "contributors": [
-                { "name": "Rianala", "github": "https://github.com/RiahM" }
+                { "name": "ANDRIAMANANJARA Rianala Masinjaka", "github": "https://github.com/RiahAndria" }
             ],
             "preview": "assets/Gestion-finances/stat.png",
             "gallery": [
@@ -143,8 +143,8 @@
                 "Architecture découplée entre un frontend Vue.js et une API backend PHP/PDO connectée à PostgreSQL"
             ],
             "contributors": [
-                { "name": "Rianala", "github": "https://github.com/RiahM" },
-                { "name": "Fy Haritra", "github": "https://github.com/haritra7159-bit" }
+                { "name": "ANDRIAMANANJARA Rianala Masinjaka", "github": "https://github.com/RiahAndria" },
+                { "name": "ANDRIANARISOA Aina Fy Haritra", "github": "https://github.com/haritra7159-bit" }
             ],
             "preview": "assets/gestion-enseignants/accueil.png",
             "gallery": [
@@ -176,8 +176,8 @@
                 "Architecture MVC classique sous Laravel avec migrations et ORM relationnel"
             ],
             "contributors": [
-                { "name": "Rianala Andriamanjanjara", "github": "https://github.com/RiahM" },
-                { "name": "Fy Haritra", "github": "https://github.com/haritra7159-bit" }
+                { "name": "ANDRIAMANANJARA Rianala Masinjaka", "github": "https://github.com/RiahAndria" },
+                { "name": "ANDRIANARISOA Aina Fy Haritra", "github": "https://github.com/haritra7159-bit" }
             ],
             "preview": "assets/gestion-soutenance/dashboard.png",
             "gallery": [
