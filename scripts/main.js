@@ -1,6 +1,114 @@
 document.documentElement.classList.add('js');
 
 (function () {
+  var intro = document.getElementById('intro');
+  var introOutput = document.getElementById('introOutput');
+  var introStep = 0;
+  var typingDelay = 140;
+  var eraseDelay = 90;
+
+  function writeText(text, onComplete) {
+    introOutput.textContent = '';
+    var index = 0;
+
+    function writeNext() {
+      if (index >= text.length) {
+        onComplete();
+        return;
+      }
+
+      var character = document.createElement('span');
+      character.className = 'intro-character';
+      character.textContent = text[index] === ' ' ? '\u00a0' : text[index];
+      introOutput.appendChild(character);
+      index += 1;
+      window.setTimeout(writeNext, typingDelay);
+    }
+
+    writeNext();
+  }
+
+  function eraseText(onComplete) {
+    function eraseNext() {
+      var characters = introOutput.querySelectorAll('.intro-character');
+
+      if (!characters.length) {
+        onComplete();
+        return;
+      }
+
+      characters[characters.length - 1].remove();
+      window.setTimeout(eraseNext, eraseDelay);
+    }
+
+    eraseNext();
+  }
+
+  function finishIntro() {
+    if (!intro || introStep !== 1) {
+      return;
+    }
+
+    introStep = 2;
+    eraseText(function () {
+      intro.classList.remove('is-erasing');
+      intro.classList.add('is-command');
+
+      writeText('sudo whoami', function () {
+        window.setTimeout(function () {
+          intro.classList.add('is-complete');
+          document.body.classList.remove('intro-active');
+          window.dispatchEvent(new Event('portfolio-ready'));
+          window.setTimeout(function () {
+            intro.remove();
+          }, 950);
+        }, 1000);
+      });
+    });
+    intro.classList.add('is-erasing');
+  }
+
+  function advanceIntro(event) {
+    if (!intro || introStep !== 1) {
+      return;
+    }
+
+    event.preventDefault();
+    finishIntro();
+  }
+
+  if (intro) {
+    document.body.classList.add('intro-active');
+    intro.focus();
+    introOutput.textContent = '';
+    intro.style.setProperty('--intro-x', '50%');
+    intro.style.setProperty('--intro-y', '50%');
+    window.setTimeout(function () {
+      if (introStep !== 0) {
+        return;
+      }
+
+      introStep = 1;
+      intro.classList.add('is-welcome');
+      writeText('welcome', function () {});
+    }, 650);
+    intro.addEventListener('pointermove', function (event) {
+      intro.style.setProperty('--intro-x', event.clientX + 'px');
+      intro.style.setProperty('--intro-y', event.clientY + 'px');
+    });
+    intro.addEventListener('pointerdown', function (event) {
+      var ripple = document.createElement('span');
+      ripple.className = 'intro-click-ripple';
+      ripple.style.left = event.clientX + 'px';
+      ripple.style.top = event.clientY + 'px';
+      intro.appendChild(ripple);
+      window.setTimeout(function () {
+        ripple.remove();
+      }, 700);
+    });
+    window.addEventListener('pointerdown', advanceIntro, { capture: true, passive: false });
+  }
+
   var toggle = document.getElementById('navToggle');
   var navList = document.getElementById('navList');
 

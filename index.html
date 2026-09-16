@@ -10,8 +10,23 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/main.css">
   <script src="scripts/main.js" defer></script>
+  <script src="scripts/terminal-animations.js" defer></script>
 </head>
 <body>
+  <div class="intro" id="intro" role="dialog" aria-label="Terminal d'accueil" aria-live="polite" tabindex="-1">
+    <div class="intro-terminal">
+      <div class="intro-window-bar">
+        <span class="config-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>terminal</span>
+        <span class="config-status">[ready]</span>
+      </div>
+      <div class="intro-terminal-body">
+        <span class="intro-prompt">riah@portfolio:~$</span>
+        <span class="intro-output" id="introOutput">welcome</span>
+        <span class="intro-cursor" aria-hidden="true"></span>
+      </div>
+    </div>
+  </div>
   <a class="skip-link" href="#accueil">Aller au contenu</a>
 
   <nav class="nav" aria-label="Navigation principale">
@@ -72,6 +87,7 @@
           </div>
           <div class="config-body">
             <div class="config-lines">
+              <div class="config-command" aria-hidden="true"></div>
               <div class="config-line"><span class="line-number">01</span><span class="config-key">profile</span><span class="config-symbol">=</span><span class="config-value">"software_developer"</span></div>
               <div class="config-line"><span class="line-number">02</span><span class="config-key">languages</span><span class="config-symbol">=</span><span class="config-value config-list">[<span>C#</span>, <span>Java</span>, <span>JavaScript</span>, <span>HTML</span>, <span>CSS</span>, <span>C</span>, <span>C++</span>, <span>Python</span>, <span>SQL</span>, <span>PHP</span>]</span></div>
               <div class="config-line"><span class="line-number">03</span><span class="config-key">tooling</span><span class="config-symbol">=</span><span class="config-value config-list">[<span>VS Code</span>, <span>GitHub</span>, <span>Figma</span>]</span></div>
