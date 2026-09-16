@@ -27,6 +27,20 @@
     output.appendChild(line);
   }
 
+  function addCommandLine(command) {
+    var line = document.createElement('p');
+    var commandPrompt = document.createElement('span');
+    var commandText = document.createElement('span');
+
+    line.className = 'terminal-command-line';
+    commandPrompt.className = 'terminal-command-prompt';
+    commandPrompt.textContent = 'riah@portfolio:' + pathLabel() + '$ ';
+    commandText.textContent = command;
+    line.appendChild(commandPrompt);
+    line.appendChild(commandText);
+    output.appendChild(line);
+  }
+
   function pathLabel() {
     return currentPath.length ? '~/' + currentPath.join('/') : '~';
   }
@@ -200,7 +214,7 @@
       return;
     }
 
-    addLine('riah@portfolio:' + pathLabel() + '$ ' + input.value, 'terminal-response');
+    addCommandLine(input.value);
     input.value = '';
     runCommand(rawCommand);
   });
