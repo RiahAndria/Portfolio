@@ -1,0 +1,195 @@
+{
+	"site": {
+		"title": "Portfolio — Riah",
+		"brand": "riah",
+		"brandSuffix": "@portfolio",
+		"email": "riahandria@outlook.fr",
+		"github": "https://github.com/RiahAndria",
+		"linkedin": "https://www.linkedin.com/in/rianala-masinjaka-andriamananjara-78260a437/",
+		"year": 2026,
+		"owner": "Rianala",
+		"introPrompt": "utilisateur@portfolio:~$",
+		"introWelcome": "welcome",
+		"introCommand": "sudo whoami"
+	},
+	"home": {
+		"hero": {
+			"command": "$ sudo whoami",
+			"name": "ANDRIAMANANJARA Rianala Masinjaka",
+			"role": "Étudiant en informatique — Ingéniérie Logicielle & Systèmes d'Information",
+			"schoolCommand": "$ cat formation.txt",
+			"school": "Ecole Nationale d'Informatique (ENI) Fianarantsoa",
+			"level": "Ingéniérie Logicielle & Systèmes d'Information — L2",
+			"bio": "Passionné par le développement logiciel et la conception de bases de données, je construis des applications desktop et web, de la modélisation des données jusqu'à l'interface utilisateur. Complète cette présentation avec tes propres mots.",
+			"heroImages": [
+				"assets/bg-hero/bdd.png",
+				"assets/bg-hero/code1.png",
+				"assets/bg-hero/code2.png"
+			]
+		},
+		"skills": {
+			"title": "Compétences",
+			"description": "Langages, outils et technologies utilisés.",
+			"profile": "software_developer",
+			"languages": ["C#", "Java", "JavaScript", "HTML", "CSS", "C", "C++", "Python", "SQL", "PHP"],
+			"tooling": ["VS Code", "GitHub", "Figma", "Maven"],
+			"databases": ["PostgreSQL", "SQLite"],
+			"frameworks": [".NET", "WPF", "Qt", "Vue.js", "Laravel"],
+			"comment": "built with curiosity and caffeine",
+			"previewImage": "assets/gestion-finances/stat.png",
+			"previewLabel": "gestion-financiere"
+		},
+		"projects": {
+			"title": "Projets",
+			"description": "Quelques projets réalisés pendant ma formation ou en autonomie.",
+			"groups": [
+				{ "title": "Développement desktop" },
+				{ "title": "Développement web" }
+			]
+		}
+	},
+	"projects": {
+		"gestion-medicale": {
+            "title": "Gestion Médicale",
+            "meta": "Projet scolaire — C# / WPF — PostgreSQL",
+            "type": "school_project",
+            "stack": "C# + .NET + WPF + PostgreSQL + Dapper",
+            "status": "in_progress",
+            "context": "Développé dans le cadre d'un projet universitaire en équipe (L2) visant à concevoir une application de bureau robuste avec architecture en couches, gestion des transactions et persistance des données.",
+            "description": "Application de bureau développée pour la gestion complète d'un cabinet médical. Elle centralise les dossiers patients, l'agenda des médecins, un assistant de rendez-vous en 7 étapes, le suivi des consultations et des ordonnances, ainsi qu'un module de facturation avec gestion des transactions PostgreSQL.",
+            "features": [
+                "Gestion unifiée des patients, médecins et dossiers médicaux",
+                "Assistant de prise de rendez-vous en 7 étapes (anti-doubles réservations)",
+                "Suivi des consultations, diagnostics et éditions d'ordonnances",
+                "Module de paiement flexible (acomptes, soldes et facturation)",
+                "Architecture sécurisée avec transactions SQL et persistance via Dapper"
+            ],
+            "contributors": [
+                { "name": "Rianala Andriamanjanjara", "github": "https://github.com/RiahM" },
+                { "name": "Fy Haritra", "github": "https://github.com/haritra7159-bit" },
+                { "name": "Alinot", "github": "https://github.com/alinotandrianjohany-sys" },
+                { "name": "Sylvia", "github": "https://github.com/sylviaandriamahandry-maker" }
+            ],
+            "preview": "assets/Gestion-Patients/dossier.png",
+            "gallery": [
+                { "image": "assets/Gestion-Patients/dossier.png", "caption": "Dossier médical" },
+                { "image": "assets/Gestion-Patients/patient.png", "caption": "Gestion des patients" },
+                { "image": "assets/Gestion-Patients/medecin.png", "caption": "Gestion des médecins" },
+                { "image": "assets/Gestion-Patients/rdv.png", "caption": "Gestion des rendez-vous" },
+                { "image": "assets/Gestion-Patients/bdd.png", "caption": "Base de données" }
+            ],
+            "link":[
+                { "url": "https://github.com/RiahAndria/gestionPatient.git" }
+            ]
+        },
+        "gestion-financiere": {
+            "title": "Gestion Financière",
+            "meta": "Projet scolaire — C# / WPF — SQLite",
+            "type": "school_project",
+            "stack": "C# + .NET + WPF + SQLite + ClosedXML + QuestPDF",
+            "status": "in_progress",
+            "context": "Développé dans le cadre d'un projet universitaire visant à concevoir une application de bureau autonome et structurée, axée sur la gestion de données locales et l'interopérabilité (Excel/PDF).",
+            "description": "Application desktop de gestion financière personnelle et professionnelle. Elle permet de suivre les flux de trésorerie, d'organiser les opérations via une hiérarchie de rubriques, d'analyser les tendances mensuelles/annuelles et d'interagir nativement avec des fichiers Excel et PDF.",
+            "features": [
+                "Suivi unifié des entrées et sorties d'argent avec historique des modifications",
+                "Classement hiérarchique des opérations par rubriques et sous-rubriques",
+                "Analyses statistiques de l'évolution financière par mois et par année",
+                "Importation et exportation de données sous format Excel (ClosedXML)",
+                "Génération de rapports financiers professionnels au format PDF (QuestPDF)",
+                "Stockage local autonome et sécurisé via une base de données SQLite"
+            ],
+            "contributors": [
+                { "name": "Rianala", "github": "https://github.com/RiahM" }
+            ],
+            "preview": "assets/Gestion-finances/stat.png",
+            "gallery": [
+                { "image": "assets/Gestion-finances/ajout.png", "caption": "Formulaire d'ajout d'un mouvement" },
+                { "image": "assets/Gestion-finances/hyst.png", "caption": "Historique des actions" },
+                { "image": "assets/Gestion-finances/overview.png", "caption": "Aperçu des rubriques" },
+                { "image": "assets/Gestion-finances/stat.png", "caption": "Analyses et graphiques" },
+                { "image": "assets/Gestion-finances/rap.png", "caption": "Export de rapports en pdf" }
+            ],
+            "link":[
+                { "url": "https://github.com/haritra7159-bit/Gestion-Session-CEPE.git" }
+            ]
+        },
+		"gestion-session-cepe": {
+			"title": "Gestion Session CEPE",
+			"meta": "Projet scolaire — Java / JavaFX / Maven — PostgreSQL",
+			"type": "school_project",
+			"stack": "Java + JavaFX + PostgreSQL",
+			"status": "in_progress",
+			"description": "Application de gestion des candidats et des sessions d’un examen scolaire.",
+			"preview": "",
+			"gallery": [],
+            "link":[
+                { "url": "https://github.com/haritra7159-bit/Gestion-Session-CEPE.git" }
+            ]
+		},
+		"gestion-enseignants": {
+            "title": "Gestion Enseignants",
+            "meta": "Projet scolaire — Vue.js / PHP — PostgreSQL",
+            "type": "school_project",
+            "stack": "Vue.js 3 + Vite + PHP + PDO + PostgreSQL + Chart.js",
+            "status": "in_progress",
+            "context": "Développé dans le cadre d'un projet universitaire (SPA) visant à concevoir une application web moderne avec une architecture découplée frontend/backend et une gestion complète des authentifications et calculs dynamiques.",
+            "description": "Application web monopage (SPA) de gestion administrative des enseignants. Elle permet de centraliser les profils, de calculer automatiquement les prestations selon le taux horaire et les heures effectuées, et d'analyser les données à l'aide de graphiques statistiques interactifs.",
+            "features": [
+                "Authentification sécurisée avec hachage bcrypt, gestion de session et validation administrateur",
+                "Tableau de bord synthétique avec indicateurs clés et métriques globales",
+                "Formulaire d'ajout et de modification avec prévisualisation dynamique des calculs de prestations",
+                "Gestion complète des enseignants (recherche multicritères, tableaux, suppressions confirmées)",
+                "Module de bilan et graphiques statistiques intégrés via Chart.js et vue-chartjs",
+                "Architecture découplée entre un frontend Vue.js et une API backend PHP/PDO connectée à PostgreSQL"
+            ],
+            "contributors": [
+                { "name": "Rianala", "github": "https://github.com/RiahM" },
+                { "name": "Fy Haritra", "github": "https://github.com/haritra7159-bit" }
+            ],
+            "preview": "assets/gestion-enseignants/accueil.png",
+            "gallery": [
+                {"video": "assets/gestion-enseignants/vid-demo.mp4", "caption": "Connexion à l'application" },
+                { "image": "assets/gestion-enseignants/login.png", "caption": "Authentification" },
+                { "image": "assets/gestion-enseignants/accueil.png", "caption": "Page d'accueil et tableau de bord" },
+                { "image": "assets/gestion-enseignants/ajout.png", "caption": "Ajout d'un enseignant" },
+                { "image": "assets/gestion-enseignants/liste.png", "caption": "Liste des enseignants" },
+                { "image": "assets/gestion-enseignants/stat1.png", "caption": "Bilan et graphiques" },
+                { "image": "assets/gestion-enseignants/stat2.png", "caption": "Suite des Bilan et graphiques" }
+            ],
+            "link":[
+                { "url": "https://github.com/RiahAndria/pjt_vuejs.git" }
+            ]
+        },
+		"gestion-soutenances": {
+            "title": "Gestion des Soutenances",
+            "meta": "Projet scolaire — PHP / Laravel — PostgreSQL",
+            "type": "school_project",
+            "stack": "PHP + Laravel + Blade + FPDF + PostgreSQL",
+            "status": "in_progress",
+            "context": "Réalisé dans le cadre d'un examen pratique et d'une évaluation académique, avec pour objectif de structurer une application web complète sous Laravel répondant à un besoin de gestion administrative réel.",
+            "description": "Application web MVC de gestion académique conçue pour centraliser le suivi des étudiants, des professeurs, des structures d'accueil et des jurys. Elle permet d'automatiser la planification des soutenances et la génération de procès-verbaux officiels au format PDF.",
+            "features": [
+                "Centralisation des fiches étudiants, professeurs et organismes d'accueil",
+                "Planification des soutenances avec attribution des jurys, notes et années universitaires",
+                "Génération automatisée et officielle des procès-verbaux (PV) via FPDF",
+                "Remplacement des suivis manuels dispersés par une interface web unique et traçable",
+                "Architecture MVC classique sous Laravel avec migrations et ORM relationnel"
+            ],
+            "contributors": [
+                { "name": "Rianala Andriamanjanjara", "github": "https://github.com/RiahM" },
+                { "name": "Fy Haritra", "github": "https://github.com/haritra7159-bit" }
+            ],
+            "preview": "assets/gestion-soutenance/dashboard.png",
+            "gallery": [
+                { "image": "assets/gestion-soutenance/dashboard.png", "caption": "Tableau de bord" },
+                { "image": "assets/gestion-soutenance/etudiant.png", "caption": "Gestion des étudiants" },
+                { "image": "assets/gestion-soutenance/professeurs.png", "caption": "Gestion des professeurs" },
+                { "image": "assets/gestion-soutenance/pv.png", "caption": "Procès-verbal" },
+                { "image": "assets/gestion-soutenance/soutenance.png", "caption": "Planification des soutenances" }
+            ],
+            "link":[
+                { "url": "https://github.com/RiahAndria/pjt_php.git" }
+            ]
+        }
+	}
+}

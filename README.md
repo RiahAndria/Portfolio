@@ -9,6 +9,7 @@ fenetres de configuration, transitions legeres et cartes projets interactives.
 ```text
 .
 ├── index.html
+├── content.json
 ├── styles/
 │   └── main.css
 ├── scripts/
@@ -31,13 +32,24 @@ de detail accessibles en cliquant sur les cartes de la section Projets.
 
 ## Lancer le projet
 
-Ouvrir `index.html` dans un navigateur suffit. Pour lancer un serveur local :
+Le contenu est chargé depuis `content.json`, donc le portfolio doit être lancé
+avec un serveur local (l'ouverture directe en `file://` bloque le chargement JSON).
+Pour lancer le serveur :
 
 ```powershell
 python -m http.server 8000
 ```
 
 Puis ouvrir `http://localhost:8000`.
+
+## Modifier le contenu
+
+Le fichier `content.json` centralise les textes, liens, images du hero, competences,
+projets, descriptions, metadonnees et legendes de galerie. Modifiez ce fichier pour
+mettre a jour le contenu sans toucher aux pages HTML.
+
+Les chemins d'images sont relatifs a la racine du projet, par exemple
+`assets/gestion-enseignants/img1.jpg`.
 
 ## Ajouter les liens GitHub
 
@@ -78,12 +90,6 @@ les chemins commencent par :
 ```html
 assets/nom-du-projet/nom-image.png
 ```
-
-## Personnaliser le contenu
-
-Le contenu principal se trouve dans `index.html` : nom, formation, presentation,
-liens sociaux et competences. Les descriptions de projets se trouvent dans les
-pages correspondantes de `views/projects/`.
 
 Les couleurs, typographies, animations et composants sont centralises dans
 `styles/main.css`. Le menu mobile, les animations de page, les cartes cliquables

@@ -6,7 +6,7 @@
   <title>Gestion financière — Portfolio</title>
   <link rel="stylesheet" href="../../styles/main.css">
 </head>
-<body>
+<body data-project="gestion-financiere">
   <main class="project-page">
     <div class="container">
       <header class="project-page-header">
@@ -16,9 +16,10 @@
         <div class="project-page-actions"><a class="flag-link" href="#">--github lien du repo à ajouter</a></div>
         <div class="project-readout"><span>type = "personal_project"</span><span>stack = "C# + WPF + SQLite"</span><span>status = "in_progress"</span></div>
       </header>
+      <h2 class="project-description-title">À propos du projet</h2>
       <section class="project-description">
-        <div class="project-window-bar"><span class="config-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>about.md</span><span class="config-status">[read_only]</span></div>
-        <h2>À propos du projet</h2>
+        <div class="project-window-bar"><span class="config-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>project.config</span><button class="config-status project-refresh" type="button" aria-label="Rejouer l'animation du terminal">[refresh]</button></div>
+        <span class="project-extra-command project-about-command">$ cat about.txt</span>
         <p>Application desktop personnelle de suivi financier, conçue avec C# et WPF et reliée à une base SQLite. Elle pourra présenter les écrans de saisie, de suivi et de consultation des dépenses.</p>
       </section>
       <section class="project-page-section">
@@ -32,6 +33,7 @@
       <a class="project-back" href="../../index.html#projets">&lt; retour aux projets</a>
     </div>
   </main>
-  <script src="../../scripts/main.js" defer></script>
+  <script src="../../scripts/main.js?v=3" defer></script>
+  <script src="../../scripts/terminal-animations.js?v=1" defer></script>
 </body>
 </html>

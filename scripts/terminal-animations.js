@@ -3,6 +3,9 @@
   var formation = document.querySelector('.hero-school');
   var skillsSection = document.getElementById('competences');
   var skillsConfig = document.querySelector('.skills-config');
+  var projectDescription = document.querySelector('.project-description');
+  var projectRefresh = document.querySelector('.project-refresh');
+  var projectAnimationRun = 0;
   var introReady = false;
 
   function typeCharacters(element, text, delay, onComplete) {
@@ -64,6 +67,68 @@
     });
   }
 
+  function revealProjectDetails(force) {
+    if (!projectDescription || (!force && projectDescription.classList.contains('is-terminal-started'))) {
+      return;
+    }
+
+    projectAnimationRun += 1;
+    var animationRun = projectAnimationRun;
+    projectDescription.classList.add('is-terminal-started');
+    var blocks = Array.from(projectDescription.querySelectorAll('.project-about-command, .project-extra-command'));
+
+    function revealBlock(index) {
+      if (animationRun !== projectAnimationRun || index >= blocks.length) {
+        return;
+      }
+
+      var command = blocks[index];
+      var output = command.nextElementSibling;
+      var commandText = command.textContent;
+      command.classList.add('is-terminal-typing');
+      typeCharacters(command, commandText, 78, function () {
+        if (animationRun !== projectAnimationRun) {
+          return;
+        }
+        command.classList.remove('is-terminal-typing');
+        command.classList.add('is-terminal-visible');
+        if (output) {
+          window.setTimeout(function () {
+            if (animationRun !== projectAnimationRun) {
+              return;
+            }
+            output.classList.add('is-terminal-visible');
+            revealBlock(index + 1);
+          }, 120);
+        } else {
+          revealBlock(index + 1);
+        }
+      });
+    }
+
+    projectDescription.querySelectorAll('.project-description > p, .project-extra p, .project-extra ul').forEach(function (output) {
+      output.classList.remove('is-terminal-visible');
+      output.classList.add('project-detail-output');
+    });
+    blocks.forEach(function (command) {
+      command.classList.remove('is-terminal-typing');
+      command.classList.remove('is-terminal-visible');
+    });
+    revealBlock(0);
+  }
+
+  if (projectRefresh) {
+    projectRefresh.addEventListener('click', function () {
+      revealProjectDetails(true);
+    });
+  }
+
+  if (projectDescription) {
+    window.setTimeout(function () {
+      revealProjectDetails();
+    }, 1200);
+  }
+
   window.addEventListener('portfolio-ready', function () {
     if (introReady) {
       return;
@@ -73,9 +138,15 @@
     window.setTimeout(revealFormation, 280);
   });
 
-  if (!document.getElementById('intro')) {
-    window.setTimeout(revealFormation, 280);
-  }
+  window.addEventListener('portfolio-content-ready', function () {
+    if (projectDescription) {
+      window.setTimeout(revealProjectDetails, 120);
+    }
+
+    if (!document.getElementById('intro')) {
+      window.setTimeout(revealFormation, 280);
+    }
+  }, { once: true });
 
   if (skillsSection && skillsConfig && 'IntersectionObserver' in window) {
     var observer = new IntersectionObserver(function (entries) {

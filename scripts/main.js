@@ -1,11 +1,204 @@
 document.documentElement.classList.add('js');
 
 (function () {
+  function assetPath(path) {
+    return document.body.dataset.project && path && !path.startsWith('../') ? '../../' + path : path;
+  }
+
+  function renderGallery(gallery, images) {
+    gallery.innerHTML = '';
+    images.forEach(function (item) {
+      var link = document.createElement('button');
+      link.className = 'project-shot-link';
+      link.type = 'button';
+      if (item.video) {
+        var video = document.createElement('video');
+        video.className = 'project-shot project-shot-video';
+        video.src = assetPath(item.video);
+        video.autoplay = true;
+        video.loop = true;
+        video.muted = true;
+        video.playsInline = true;
+        video.preload = 'auto';
+        video.setAttribute('aria-label', item.caption || 'Vidéo du projet');
+        link.appendChild(video);
+      } else {
+        var image = document.createElement('img');
+        image.className = 'project-shot';
+        image.src = assetPath(item.image);
+        image.alt = item.caption || '';
+        image.dataset.caption = item.caption || '';
+        link.appendChild(image);
+      }
+      gallery.appendChild(link);
+    });
+
+    if (!images.length) {
+      gallery.innerHTML = '<div class="project-shot">Images a ajouter depuis content.json</div><div class="project-shot">Capture a ajouter</div><div class="project-shot">Capture a ajouter</div>';
+    }
+  }
+
+  function renderProjectDetails(projectDescription, project) {
+    projectDescription.querySelectorAll('.project-extra').forEach(function (element) {
+      element.remove();
+    });
+
+    if (project.context) {
+      var context = document.createElement('div');
+      context.className = 'project-extra project-context';
+      context.innerHTML = '<span class="project-extra-command">$ cat context.txt</span>';
+      var contextText = document.createElement('p');
+      contextText.textContent = project.context;
+      context.appendChild(contextText);
+      projectDescription.appendChild(context);
+    }
+
+    if (Array.isArray(project.features) && project.features.length) {
+      var features = document.createElement('div');
+      features.className = 'project-extra project-features';
+      features.innerHTML = '<span class="project-extra-command">$ ls features/</span>';
+      var featureList = document.createElement('ul');
+      project.features.forEach(function (feature) {
+        var featureItem = document.createElement('li');
+        featureItem.textContent = feature;
+        featureList.appendChild(featureItem);
+      });
+      features.appendChild(featureList);
+      projectDescription.appendChild(features);
+    }
+
+    if (Array.isArray(project.contributors) && project.contributors.length) {
+      var contributors = document.createElement('div');
+      contributors.className = 'project-extra project-contributors';
+      contributors.innerHTML = '<span class="project-extra-command">$ cat contributors.txt</span>';
+      var contributorList = document.createElement('ul');
+      project.contributors.forEach(function (contributor) {
+        var contributorItem = document.createElement('li');
+        var contributorName = document.createElement('span');
+        contributorName.textContent = contributor.name;
+        contributorItem.appendChild(contributorName);
+        if (contributor.github) {
+          var contributorLink = document.createElement('a');
+          contributorLink.href = contributor.github;
+          contributorLink.target = '_blank';
+          contributorLink.rel = 'noopener';
+          contributorLink.textContent = '[github]';
+          contributorItem.appendChild(document.createTextNode(' '));
+          contributorItem.appendChild(contributorLink);
+        }
+        contributorList.appendChild(contributorItem);
+      });
+      contributors.appendChild(contributorList);
+      projectDescription.appendChild(contributors);
+    }
+  }
+
+  function hydrateContent(content) {
+    var site = content.site;
+    var projectId = document.body.dataset.project;
+    var project = projectId ? content.projects[projectId] : null;
+
+    document.title = project ? project.title + ' - Portfolio' : site.title;
+
+    var navBrand = document.querySelector('.nav-brand');
+    if (navBrand) {
+      navBrand.innerHTML = site.brand + '<span>' + site.brandSuffix + '</span>:~$';
+    }
+    document.querySelectorAll('a[href^="mailto:"]').forEach(function (link) {
+      link.href = 'mailto:' + site.email;
+    });
+    document.querySelectorAll('a[href*="github.com"]').forEach(function (link) {
+      link.href = site.github;
+    });
+    document.querySelectorAll('a[href*="linkedin.com"]').forEach(function (link) {
+      link.href = site.linkedin;
+    });
+    var footerOwner = document.querySelector('footer > span:first-child');
+    if (footerOwner) {
+      footerOwner.textContent = '\u00a9 ' + site.year + ' - ' + site.owner;
+    }
+
+    if (project) {
+      document.querySelector('.project-page-kicker').textContent = '$ project --open ' + projectId;
+      document.querySelector('.project-page h1').textContent = project.title;
+      document.querySelector('.project-page-meta').textContent = project.meta;
+      var projectGithub = project.link && project.link[0] ? project.link[0].url : '';
+      var projectGithubLink = document.querySelector('.project-page-actions .flag-link');
+      if (projectGithubLink && projectGithub) {
+        projectGithubLink.href = projectGithub;
+      }
+      document.querySelector('.project-readout').innerHTML = '<span>type = "' + project.type + '"</span><span>stack = "' + project.stack + '"</span><span>status = "' + project.status + '"</span>';
+      var projectDescription = document.querySelector('.project-description');
+      projectDescription.querySelector('p').textContent = project.description;
+      renderProjectDetails(projectDescription, project);
+      renderGallery(document.querySelector('.project-gallery'), project.gallery);
+      return;
+    }
+
+    var hero = content.home.hero;
+    document.querySelector('.hero-kicker').firstChild.textContent = hero.command;
+    document.querySelector('.hero h1').textContent = hero.name;
+    document.querySelector('.hero-role').textContent = hero.role;
+    document.querySelector('.hero-school .prompt').textContent = hero.schoolCommand;
+    document.querySelector('.hero-school .out:nth-of-type(2)').innerHTML = '&gt; <b>' + hero.school + '</b>';
+    document.querySelector('.hero-school .out:nth-of-type(3)').textContent = '&gt; ' + hero.level;
+    document.querySelector('.hero-bio').textContent = hero.bio;
+    document.querySelector('.hero-gallery').dataset.images = hero.heroImages.join(',');
+    document.querySelector('.hero-image-pane--left .hero-image-current').src = hero.heroImages[0];
+    document.querySelector('.hero-image-pane--left .hero-image-next').src = hero.heroImages[0];
+    document.querySelector('.hero-image-pane--right .hero-image-current').src = hero.heroImages[1] || hero.heroImages[0];
+    document.querySelector('.hero-image-pane--right .hero-image-next').src = hero.heroImages[1] || hero.heroImages[0];
+
+    var skills = content.home.skills;
+    document.querySelector('#competences .section-head h2').innerHTML = '<span class="mark">##</span> ' + skills.title;
+    document.querySelector('#competences .section-head p').textContent = skills.description;
+    document.querySelector('.config-value').textContent = '"' + skills.profile + '"';
+    var configValues = document.querySelectorAll('.config-list');
+    [skills.languages, skills.tooling, skills.databases, skills.frameworks].forEach(function (values, index) {
+      configValues[index].innerHTML = '[' + values.map(function (value) { return '<span>' + value + '</span>'; }).join(', ') + ']';
+    });
+    document.querySelector('.config-comment > span:last-child').textContent = skills.comment;
+    document.querySelector('.config-preview img').src = skills.previewImage;
+    document.querySelector('.config-preview figcaption').innerHTML = '<span>preview</span> / ' + skills.previewLabel;
+
+    var projectContent = content.home.projects;
+    document.querySelector('#projets .section-head h2').innerHTML = '<span class="mark">##</span> ' + projectContent.title;
+    document.querySelector('#projets .section-head p').textContent = projectContent.description;
+    var cards = Array.from(document.querySelectorAll('.project-card'));
+    cards.forEach(function (card) {
+      var id = card.dataset.detail.split('/').pop().replace('.html', '');
+      var item = content.projects[id];
+      if (!item) return;
+      card.setAttribute('aria-label', 'Voir le projet ' + item.title);
+      card.querySelector('h4').textContent = item.title;
+      card.querySelector('.project-status').textContent = item.meta;
+      var cardGithubLink = card.querySelector('.project-links a');
+      var cardGithub = item.link && item.link[0] ? item.link[0].url : '';
+      if (cardGithubLink && cardGithub) {
+        cardGithubLink.href = cardGithub;
+      }
+      var preview = card.querySelector('.project-preview');
+      if (item.preview) {
+        preview.innerHTML = '<img class="project-preview-image" src="' + item.preview + '" alt="">';
+      }
+    });
+    projectContent.groups.forEach(function (group, index) {
+      var groupElement = document.querySelectorAll('.projects-group')[index];
+      groupElement.querySelector('h3').innerHTML = '<span class="mark">&gt;</span> ' + group.title;
+    });
+  }
+
+  function start(content) {
   var intro = document.getElementById('intro');
+  var siteContent = content ? content.site : null;
   var introOutput = document.getElementById('introOutput');
   var introStep = 0;
   var typingDelay = 140;
   var eraseDelay = 90;
+
+    if (intro && siteContent) {
+      intro.querySelector('.intro-prompt').textContent = siteContent.introPrompt;
+    }
 
   function writeText(text, onComplete) {
     introOutput.textContent = '';
@@ -54,7 +247,7 @@ document.documentElement.classList.add('js');
       intro.classList.remove('is-erasing');
       intro.classList.add('is-command');
 
-      writeText('sudo whoami', function () {
+      writeText(siteContent ? siteContent.introCommand : 'sudo whoami', function () {
         window.setTimeout(function () {
           intro.classList.add('is-exiting');
           window.setTimeout(function () {
@@ -133,7 +326,7 @@ document.documentElement.classList.add('js');
 
       introStep = 1;
       intro.classList.add('is-welcome');
-      writeText('welcome', function () {
+      writeText(siteContent ? siteContent.introWelcome : 'welcome', function () {
         window.setTimeout(finishIntro, 350);
       });
     }, 650);
@@ -375,4 +568,31 @@ document.documentElement.classList.add('js');
     overflowLink.appendChild(overflowLabel);
     overflowLink.classList.add('project-shot-link--more');
   });
+  }
+
+  var contentUrl = document.body.dataset.project ? '../../content.json' : 'content.json';
+
+  fetch(contentUrl + '?v=' + Date.now(), { cache: 'no-store' })
+    .then(function (response) {
+      if (!response.ok) {
+        throw new Error('Unable to load content.json');
+      }
+      return response.json();
+    })
+    .then(function (content) {
+      hydrateContent(content);
+      window.dispatchEvent(new Event('portfolio-content-ready'));
+      start(content);
+    })
+    .catch(function (error) {
+      console.error('Portfolio content could not be loaded:', error);
+      window.dispatchEvent(new Event('portfolio-content-ready'));
+      document.body.classList.remove('intro-active');
+      var introElement = document.getElementById('intro');
+      if (introElement) {
+        introElement.remove();
+      }
+      document.body.classList.add('content-load-error');
+      document.querySelector('main').innerHTML = '<div class="content-error"><h1>Erreur de contenu</h1><p>Le fichier content.json est vide ou invalide. Corrigez-le puis rechargez la page.</p></div>';
+    });
 })();
