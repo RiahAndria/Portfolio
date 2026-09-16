@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio — Rianala</title>
+  <meta name="description" content="Portfolio de Rianala, étudiant en informatique.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css">
+  <script src="scripts/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#accueil">Aller au contenu</a>
+
+  <nav class="nav" aria-label="Navigation principale">
+    <div class="nav-inner">
+      <a class="nav-brand" href="#accueil">riah<span>@portfolio</span>:~$</a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navList" aria-label="Ouvrir le menu">☰</button>
+      <ul class="nav-list" id="navList">
+        <li><a href="#accueil">accueil</a></li>
+        <li><a href="#competences">compétences</a></li>
+        <li><a href="#projets">projets</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section id="accueil" class="hero">
+      <div class="container hero-inner">
+        <p class="hero-kicker">$ whoami<span class="cursor-blink">&nbsp;</span></p>
+        <h1>ANDRIAMANANJARA Rianala Masinjaka</h1>
+        <p class="hero-role">Étudiant en informatique — Ingéniérie Logicielle &amp; Systèmes d'Information</p>
+
+        <div class="hero-school">
+          <span class="line prompt">$ cat formation.txt</span>
+          <span class="line out">&gt; <b>Ecole Nationale d'Informatique (ENI) Fianarantsoa</b></span>
+          <span class="line out">&gt; Ingéniérie Logicielle &amp; Systèmes d'Information — L2</span>
+        </div>
+
+        <p class="hero-bio">
+          Passionné par le développement logiciel et la conception de bases de données,
+          je construis des applications desktop et web, de la modélisation des données
+          jusqu'à l'interface utilisateur. Complète cette présentation avec tes propres mots.
+        </p>
+
+        <div class="hero-links">
+          <a class="flag-link" href="mailto:riahandria@outlook.fr">--mail riahandria@outlook.fr</a>
+          <a class="flag-link" href="https://github.com/RiahAndria" target="_blank" rel="noopener">--github Riah M.</a>
+          <a class="flag-link" href="https://www.linkedin.com/in/rianala-masinjaka-andriamananjara-78260a437" target="_blank" rel="noopener">--linkedin Rianala ANDRIAMANANJARA</a>
+        </div>
+      </div>
+      <div class="hero-gallery" data-images="assets/gestion-enseignants/img1.jpg" aria-hidden="true">
+        <div class="hero-image-pane hero-image-pane--left"><img src="assets/gestion-enseignants/img1.jpg" alt=""></div>
+        <div class="hero-image-pane hero-image-pane--right"><img src="assets/gestion-enseignants/img1.jpg" alt=""></div>
+      </div>
+    </section>
+
+    <section id="competences" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2><span class="mark">##</span> Compétences</h2>
+          <p>Langages, outils et technologies utilisés.</p>
+        </div>
+
+        <div class="skills-config" aria-label="Configuration des compétences">
+          <div class="config-window-bar">
+            <span class="config-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span>skills.config</span>
+            <span class="config-status">[loaded]</span>
+          </div>
+          <div class="config-body">
+            <div class="config-lines">
+              <div class="config-line"><span class="line-number">01</span><span class="config-key">profile</span><span class="config-symbol">=</span><span class="config-value">"software_developer"</span></div>
+              <div class="config-line"><span class="line-number">02</span><span class="config-key">languages</span><span class="config-symbol">=</span><span class="config-value config-list">[<span>C#</span>, <span>Java</span>, <span>JavaScript</span>, <span>HTML</span>, <span>CSS</span>, <span>C</span>, <span>C++</span>, <span>Python</span>, <span>SQL</span>, <span>PHP</span>]</span></div>
+              <div class="config-line"><span class="line-number">03</span><span class="config-key">tooling</span><span class="config-symbol">=</span><span class="config-value config-list">[<span>VS Code</span>, <span>GitHub</span>, <span>Figma</span>]</span></div>
+              <div class="config-line"><span class="line-number">04</span><span class="config-key">databases</span><span class="config-symbol">=</span><span class="config-value config-list">[<span>PostgreSQL</span>]</span></div>
+              <div class="config-line"><span class="line-number">05</span><span class="config-key">frameworks</span><span class="config-symbol">=</span><span class="config-value config-list">[<span>.NET</span>, <span>WPF</span>, <span>Qt</span>, <span>Vue.js</span>, <span>Laravel</span>]</span></div>
+              <div class="config-line config-comment"><span class="line-number">06</span><span>#</span><span>built with curiosity and caffeine</span></div>
+            </div>
+            <figure class="config-preview">
+              <div class="config-preview-frame"><img src="assets/gestion-enseignants/img1.jpg" alt="Aperçu visuel d'un projet réalisé"></div>
+              <figcaption><span>preview</span> / gestion-enseignants</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projets" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2><span class="mark">##</span> Projets</h2>
+          <p>Cinq projets, répartis entre développement desktop et développement web.</p>
+        </div>
+
+        <div class="projects-group">
+          <h3><span class="mark">&gt;</span> Développement desktop</h3>
+          <div class="project-grid">
+            <article class="project-card" data-detail="views/projects/gestion-medicale.html" tabindex="0" role="link" aria-label="Voir le projet Gestion Médicale">
+              <div class="project-preview" aria-hidden="true"><div class="preview-screen"><span class="preview-bar">GESTION MEDICALE</span><span class="preview-line preview-line--wide"></span><span class="preview-line"></span><span class="preview-line preview-line--short"></span></div></div>
+              <h4>Gestion Médicale</h4>
+              <p class="project-status">Projet scolaire — C# / WPF — PostgreSQL</p>
+              <div class="project-links"><a href="#">--code</a></div>
+            </article>
+
+            <article class="project-card" data-detail="views/projects/gestion-financiere.html" tabindex="0" role="link" aria-label="Voir le projet Gestion financière">
+              <div class="project-preview" aria-hidden="true"><div class="preview-screen"><span class="preview-bar">GESTION FINANCIERE</span><span class="preview-line preview-line--wide"></span><span class="preview-line"></span><span class="preview-line preview-line--short"></span></div></div>
+              <h4>Gestion financière</h4>
+              <p class="project-status">Projet personnel — C# / WPF — SQLite</p>
+              <div class="project-links"><a href="#">--code</a></div>
+            </article>
+
+            <article class="project-card" data-detail="views/projects/gestion-session-cepe.html" tabindex="0" role="link" aria-label="Voir le projet Gestion Session CEPE">
+              <div class="project-preview" aria-hidden="true"><div class="preview-screen"><span class="preview-bar">SESSION CEPE</span><span class="preview-line preview-line--wide"></span><span class="preview-line"></span><span class="preview-line preview-line--short"></span></div></div>
+              <h4>Gestion Session CEPE</h4>
+              <p class="project-status">Projet scolaire — Java / JavaFX / Maven — PostgreSQL</p>
+              <div class="project-links"><a href="#">--code</a></div>
+            </article>
+          </div>
+        </div>
+
+        <div class="projects-group">
+          <h3><span class="mark">&gt;</span> Développement web</h3>
+          <div class="project-grid">
+            <article class="project-card" data-detail="views/projects/gestion-enseignants.html" tabindex="0" role="link" aria-label="Voir le projet Gestion Enseignants">
+              <div class="project-preview" aria-hidden="true">
+                <img class="project-preview-image" src="assets/gestion-enseignants/img1.jpg" alt="">
+              </div>
+              <h4>Gestion Enseignants</h4>
+              <p class="project-status">Projet scolaire — Vue.js — PostgreSQL</p>
+              <div class="project-links"><a href="#">--code</a></div>
+            </article>
+
+            <article class="project-card" data-detail="views/projects/gestion-soutenances.html" tabindex="0" role="link" aria-label="Voir le projet Gestion des Soutenances">
+              <div class="project-preview" aria-hidden="true"><div class="preview-screen"><span class="preview-bar">GESTION SOUTENANCES</span><span class="preview-line preview-line--wide"></span><span class="preview-line"></span><span class="preview-line preview-line--short"></span></div></div>
+              <h4>Gestion des Soutenances</h4>
+              <p class="project-status">Projet scolaire — PHP / Laravel — PostgreSQL</p>
+              <div class="project-links"><a href="#">--code</a></div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 — Rianala</span>
+    <span>
+      <a href="mailto:riahandria@outlook.fr">mail</a> ·
+      <a href="https://github.com/RiahAndria" target="_blank" rel="noopener">github</a> ·
+      <a href="https://www.linkedin.com/in/rianala-masinjaka-andriamananjara-78260a437" target="_blank" rel="noopener">linkedin</a>
+    </span>
+  </footer>
+</body>
+</html>
