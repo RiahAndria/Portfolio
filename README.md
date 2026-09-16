@@ -1,10 +1,20 @@
-# Portfolio
+﻿# Portfolio
 
-Portfolio statique en HTML, CSS et JavaScript, sans framework ni dependance a installer.
-L'interface reprend les codes d'un terminal : palette sombre, accents violet/cyan,
-fenetres de configuration, transitions legeres et cartes projets interactives.
+Ce projet est un portfolio personnel en HTML, CSS et JavaScript, conçu comme une interface immersive inspirée d'un terminal informatique. L'objectif est de présenter les projets réalisés dans un style visuel cohérent, sombre et technique, avec des éléments interactifs et une navigation fluide.
 
-## Structure
+## Fonctionnement général
+
+Le portfolio est structuré autour d'une page principale, `index.html`, qui sert de vitrine. Elle contient :
+
+- un hero section avec présentation personnelle,
+- une section de compétences,
+- une section de projets,
+- une navigation interne légère,
+- des éléments visuels en style terminal (couleurs, fenêtres, accents, transitions).
+
+Le contenu visible est principalement alimenté par `content.json`. Ce fichier centralise les textes, liens, images et métadonnées de chaque projet, ce qui permet de modifier le contenu sans réécrire tout le HTML à chaque changement.
+
+## Organisation du projet
 
 ```text
 .
@@ -13,84 +23,89 @@ fenetres de configuration, transitions legeres et cartes projets interactives.
 ├── styles/
 │   └── main.css
 ├── scripts/
-│   └── main.js
+│   ├── main.js
+│   └── terminal-animations.js
 ├── assets/
-│   └── gestion-enseignants/
-│       └── img1.jpg
+│   ├── bg-hero/
+│   ├── gestion-enseignants/
+│   ├── Gestion-finances/
+│   ├── Gestion-Patients/
+│   ├── gestion-soutenance/
+│   └── ...
 ├── views/
 │   └── projects/
-│       ├── gestion-medicale.html
-│       ├── gestion-financiere.html
-│       ├── gestion-session-cepe.html
 │       ├── gestion-enseignants.html
+│       ├── gestion-financiere.html
+│       ├── gestion-medicale.html
+│       ├── gestion-session-cepe.html
 │       └── gestion-soutenances.html
-└── README.md
+├── README.md
+└── ...
 ```
 
-`index.html` est la page d'accueil. Les pages de `views/projects/` sont les pages
-de detail accessibles en cliquant sur les cartes de la section Projets.
+## Comment le portfolio fonctionne
 
-## Lancer le projet
+### 1. La page d’accueil
 
-Le contenu est chargé depuis `content.json`, donc le portfolio doit être lancé
-avec un serveur local (l'ouverture directe en `file://` bloque le chargement JSON).
-Pour lancer le serveur :
+`index.html` est la page principale du portfolio. Elle charge les données depuis `content.json` via JavaScript, puis affiche :
 
-```powershell
-python -m http.server 8000
-```
+- le titre et le texte de présentation,
+- les compétences clés,
+- les projets disponibles,
+- les visuels associés à chaque projet.
 
-Puis ouvrir `http://localhost:8000`.
+### 2. Les projets
 
-## Modifier le contenu
+Chaque projet est représenté par une carte dans la section “Projets”. En cliquant dessus, l’utilisateur est dirigé vers une page détaillée située dans `views/projects/`.
 
-Le fichier `content.json` centralise les textes, liens, images du hero, competences,
-projets, descriptions, metadonnees et legendes de galerie. Modifiez ce fichier pour
-mettre a jour le contenu sans toucher aux pages HTML.
+Ces pages de détail servent à présenter :
 
-Les chemins d'images sont relatifs a la racine du projet, par exemple
-`assets/gestion-enseignants/img1.jpg`.
+- le contexte du projet,
+- les fonctionnalités principales,
+- les captures d’écran,
+- les liens utiles,
+- une vision plus complète du travail réalisé.
 
-## Ajouter les liens GitHub
+### 3. Les données centralisées
 
-Chaque page de projet contient actuellement un placeholder :
+Les textes et informations du portfolio sont stockés dans `content.json`. Cela permet de garder une séparation claire entre :
 
-```html
-<a class="flag-link" href="#">--github lien du repo a ajouter</a>
-```
+- le contenu éditorial,
+- la structure HTML,
+- le style visuel CSS,
+- la logique JavaScript.
 
-Remplacer uniquement `#` par l'URL du repository correspondant dans le fichier
-de detail du projet.
+Cette séparation rend la maintenance plus simple et évite de modifier plusieurs fichiers pour un même changement de contenu.
 
-## Ajouter les captures
+### 4. Le design et les interactions
 
-Ranger les images par projet dans `assets/` :
+Le style général du portfolio est défini dans `styles/main.css`. Il gère :
 
-```text
-assets/
-└── gestion-enseignants/
-	├── img1.jpg
-	├── img2.jpg
-	└── img3.jpg
-```
+- la palette sombre,
+- les typographies,
+- les cartes de projets,
+- les animations,
+- les effets visuels de type interface terminal.
 
-Dans la page de detail, la premiere image de chaque galerie doit etre la page
-d'accueil de l'application. Les images sont cliquables et s'ouvrent dans une
-visionneuse avec navigation precedente/suivante.
+La logique d’interaction est dans `scripts/main.js` et `scripts/terminal-animations.js`. Ces fichiers assurent :
 
-Les chemins depuis une page de `views/projects/` commencent par :
+- l’affichage dynamique du contenu,
+- la navigation entre sections et pages,
+- les animations,
+- le comportement des galeries d’images,
+- la gestion des éléments interactifs.
 
-```html
-../../assets/nom-du-projet/nom-image.png
-```
+### 5. Les galeries de captures
 
-Pour l'aperçu de la section hero et de la section Competences dans `index.html`,
-les chemins commencent par :
+Chaque page de projet peut inclure une galerie d’images. Les images sont rangées dans les dossiers `assets/` et affichées selon un système de visionneuse qui permet de passer d’une image à l’autre. Cette partie renforce la présentation visuelle des projets et donne une meilleure idée de leur utilisation réelle.
 
-```html
-assets/nom-du-projet/nom-image.png
-```
+## Vue d’ensemble
 
-Les couleurs, typographies, animations et composants sont centralises dans
-`styles/main.css`. Le menu mobile, les animations de page, les cartes cliquables
-et la visionneuse d'images sont geres dans `scripts/main.js`.
+Le portfolio fonctionne comme une application web statique, pensée comme une vitrine digitale de projets. Il combine :
+
+- un design orienté “interface de développement”,
+- des contenus centralisés dans un fichier JSON,
+- des pages de projet détaillées,
+- des interactions JavaScript pour enrichir l’expérience utilisateur.
+
+L’ensemble donne un rendu cohérent, moderne et professionnel, tout en restant simple à maintenir et à faire évoluer.
