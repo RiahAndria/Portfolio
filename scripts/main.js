@@ -192,22 +192,26 @@ document.documentElement.classList.add('js');
     var heroImages = heroGallery.getAttribute('data-images').split(',').map(function (path) {
       return path.trim();
     }).filter(Boolean);
-    var heroPanes = heroGallery.querySelectorAll('.hero-image-pane img');
+    var heroPanes = heroGallery.querySelectorAll('.hero-image-pane');
     var heroIndex = 0;
 
     if (heroImages.length > 1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       window.setInterval(function () {
         heroIndex = (heroIndex + 1) % heroImages.length;
-        heroPanes.forEach(function (image) {
-          image.classList.add('is-changing');
+        heroPanes.forEach(function (pane) {
+          var nextImage = pane.querySelector('.hero-image-next');
+          nextImage.src = heroImages[heroIndex];
+          pane.classList.add('is-changing');
         });
         window.setTimeout(function () {
-          heroPanes.forEach(function (image) {
-            image.src = heroImages[heroIndex];
-            image.classList.remove('is-changing');
+          heroPanes.forEach(function (pane) {
+            var currentImage = pane.querySelector('.hero-image-current');
+            var nextImage = pane.querySelector('.hero-image-next');
+            currentImage.src = nextImage.src;
+            pane.classList.remove('is-changing');
           });
-        }, 450);
-      }, 5000);
+        }, 1400);
+      }, 7000);
     }
   }
 
@@ -325,10 +329,11 @@ document.documentElement.classList.add('js');
 
       var lightbox = document.createElement('dialog');
       lightbox.className = 'image-lightbox';
-      lightbox.innerHTML = '<button class="image-lightbox-close" type="button" aria-label="Fermer">×</button><button class="image-lightbox-prev" type="button" aria-label="Image précédente">←</button><img class="image-lightbox-image" alt=""><button class="image-lightbox-next" type="button" aria-label="Image suivante">→</button>';
+      lightbox.innerHTML = '<button class="image-lightbox-close" type="button" aria-label="Fermer">×</button><button class="image-lightbox-prev" type="button" aria-label="Image précédente">←</button><figure class="image-lightbox-figure"><figcaption class="image-lightbox-caption"></figcaption><img class="image-lightbox-image" alt=""></figure><button class="image-lightbox-next" type="button" aria-label="Image suivante">→</button>';
       document.body.appendChild(lightbox);
       lightbox.querySelector('button').addEventListener('click', function () { lightbox.close(); });
       var lightboxImage = lightbox.querySelector('.image-lightbox-image');
+      var lightboxCaption = lightbox.querySelector('.image-lightbox-caption');
       var previousButton = lightbox.querySelector('.image-lightbox-prev');
       var nextButton = lightbox.querySelector('.image-lightbox-next');
 
@@ -336,6 +341,7 @@ document.documentElement.classList.add('js');
         currentIndex = (index + images.length) % images.length;
         lightboxImage.src = images[currentIndex].src;
         lightboxImage.alt = images[currentIndex].alt;
+        lightboxCaption.textContent = images[currentIndex].dataset.caption || images[currentIndex].alt;
       }
 
       previousButton.addEventListener('click', function () { showImage(currentIndex - 1); });
@@ -353,5 +359,20 @@ document.documentElement.classList.add('js');
       showImage(currentIndex);
       lightbox.showModal();
     });
+  });
+
+  document.querySelectorAll('.project-gallery').forEach(function (gallery) {
+    var links = Array.from(gallery.querySelectorAll('.project-shot-link'));
+
+    if (links.length <= 3) {
+      return;
+    }
+
+    var overflowLink = links[2];
+    var overflowLabel = document.createElement('span');
+    overflowLabel.className = 'project-gallery-more';
+    overflowLabel.textContent = '+' + (links.length - 3);
+    overflowLink.appendChild(overflowLabel);
+    overflowLink.classList.add('project-shot-link--more');
   });
 })();
