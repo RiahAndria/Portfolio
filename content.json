@@ -36,7 +36,7 @@
 			"databases": ["PostgreSQL", "SQLite"],
 			"frameworks": [".NET", "WPF", "Qt", "Vue.js", "Laravel"],
 			"comment": "built with curiosity and caffeine",
-			"previewImage": "assets/gestion-finances/stat.png",
+			"previewImage": "assets/Gestion-finances/stat.png",
 			"previewLabel": "gestion-financiere"
 		},
 		"projects": {
