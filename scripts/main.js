@@ -56,28 +56,35 @@ document.documentElement.classList.add('js');
 
       writeText('sudo whoami', function () {
         window.setTimeout(function () {
-          intro.classList.add('is-complete');
-          document.body.classList.remove('intro-active');
-          window.dispatchEvent(new Event('portfolio-ready'));
+          intro.classList.add('is-exiting');
           window.setTimeout(function () {
-            intro.remove();
-          }, 950);
+            intro.classList.add('is-complete');
+            document.body.classList.remove('intro-active');
+            window.dispatchEvent(new Event('portfolio-ready'));
+            window.setTimeout(function () {
+              intro.remove();
+            }, 950);
+          }, 650);
         }, 1000);
       });
     });
     intro.classList.add('is-erasing');
   }
 
-  function advanceIntro(event) {
-    if (!intro || introStep !== 1) {
+  function blockIntroInteraction(event) {
+    if (!intro || !document.body.classList.contains('intro-active')) {
       return;
     }
 
     event.preventDefault();
-    finishIntro();
+    event.stopPropagation();
   }
 
   function showClickRipple(event) {
+    if (intro && document.body.classList.contains('intro-active')) {
+      return;
+    }
+
     var ripple = document.createElement('span');
     ripple.className = 'intro-click-ripple';
     ripple.style.left = event.clientX + 'px';
@@ -89,6 +96,10 @@ document.documentElement.classList.add('js');
   }
 
   window.addEventListener('pointerdown', showClickRipple);
+  window.addEventListener('pointerdown', blockIntroInteraction, { capture: true, passive: false });
+  window.addEventListener('wheel', blockIntroInteraction, { capture: true, passive: false });
+  window.addEventListener('touchstart', blockIntroInteraction, { capture: true, passive: false });
+  window.addEventListener('keydown', blockIntroInteraction, { capture: true, passive: false });
 
   var returningProject = window.sessionStorage.getItem('portfolio-return-project');
   var skipIntro = window.location.hash === '#projets' || Boolean(returningProject);
@@ -122,13 +133,14 @@ document.documentElement.classList.add('js');
 
       introStep = 1;
       intro.classList.add('is-welcome');
-      writeText('welcome', function () {});
+      writeText('welcome', function () {
+        window.setTimeout(finishIntro, 350);
+      });
     }, 650);
     intro.addEventListener('pointermove', function (event) {
       intro.style.setProperty('--intro-x', event.clientX + 'px');
       intro.style.setProperty('--intro-y', event.clientY + 'px');
     });
-    window.addEventListener('pointerdown', advanceIntro, { capture: true, passive: false });
   }
 
   var toggle = document.getElementById('navToggle');
