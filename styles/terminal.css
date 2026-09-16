@@ -1,0 +1,61 @@
+:root {
+  --terminal-bg: #070a0e;
+  --terminal-panel: #0d1219;
+  --terminal-border: #263341;
+  --terminal-text: #d6dbe3;
+  --terminal-dim: #7290a8;
+  --terminal-accent: #67e8f9;
+  --terminal-command: #c084fc;
+  --terminal-font: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+* { box-sizing: border-box; }
+html, body { min-height: 100%; }
+body {
+  display: grid;
+  min-height: 100vh;
+  margin: 0;
+  padding: clamp(18px, 5vw, 72px);
+  place-items: center;
+  background: radial-gradient(circle at 50% 0%, rgba(103, 232, 249, .08), transparent 42%), var(--terminal-bg);
+  color: var(--terminal-text);
+  font-family: var(--terminal-font);
+}
+
+.terminal-window {
+  width: min(920px, 100%);
+  min-height: min(620px, calc(100vh - 36px));
+  overflow: hidden;
+  background: var(--terminal-panel);
+  border: 1px solid var(--terminal-border);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, .45);
+}
+.terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 46px;
+  padding: 0 18px;
+  border-bottom: 1px solid var(--terminal-border);
+  color: var(--terminal-dim);
+  font-size: .78rem;
+}
+.terminal-bar a { margin-left: auto; color: var(--terminal-accent); text-decoration: none; }
+.terminal-dots { display: flex; gap: 6px; }
+.terminal-dots i { width: 8px; height: 8px; border-radius: 50%; background: var(--terminal-command); }
+.terminal-dots i:nth-child(2) { background: var(--terminal-accent); }
+.terminal-dots i:nth-child(3) { background: var(--terminal-dim); }
+.terminal-output { padding: 28px clamp(18px, 4vw, 42px) 8px; color: var(--terminal-dim); font-size: .9rem; }
+.terminal-output p { margin: 0 0 10px; }
+.terminal-output strong { color: var(--terminal-accent); font-weight: 500; }
+.terminal-response { color: var(--terminal-text); white-space: pre-wrap; }
+.terminal-error { color: #ff8b9e; }
+.terminal-line { display: flex; align-items: baseline; gap: 10px; padding: 0 clamp(18px, 4vw, 42px) 32px; color: var(--terminal-command); font-size: .9rem; }
+.terminal-line input { flex: 1; min-width: 0; padding: 0; border: 0; outline: 0; background: transparent; color: var(--terminal-accent); font: inherit; caret-color: var(--terminal-accent); }
+
+@media (max-width: 520px) {
+  .terminal-line { align-items: flex-start; flex-direction: column; gap: 5px; }
+  .terminal-window { min-height: calc(100vh - 36px); }
+}

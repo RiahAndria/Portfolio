@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terminal — Portfolio</title>
+  <link rel="stylesheet" href="styles/terminal.css">
+</head>
+<body>
+  <main class="terminal-window" aria-label="Terminal interactif">
+    <div class="terminal-bar">
+      <span class="terminal-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span>riah@portfolio</span>
+      <a href="index.html" aria-label="Retour au portfolio">[exit]</a>
+    </div>
+    <section class="terminal-output" id="terminalOutput" aria-live="polite">
+      <p>Welcome to riah@portfolio.</p>
+      <p>Type <strong>help</strong> to list available commands.</p>
+    </section>
+    <form class="terminal-line" id="terminalForm">
+      <label for="terminalCommand" id="terminalPrompt">riah@portfolio:~$</label>
+      <input id="terminalCommand" name="command" type="text" autocomplete="off" spellcheck="false" autofocus aria-label="Commande terminal">
+    </form>
+  </main>
+  <script src="scripts/terminal.js?v=4"></script>
+</body>
+</html>

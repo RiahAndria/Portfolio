@@ -9,8 +9,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/main.css">
-  <script src="scripts/main.js?v=3" defer></script>
+  <script src="scripts/main.js?v=4" defer></script>
   <script src="scripts/terminal-animations.js?v=2" defer></script>
+  <script src="scripts/terminal-header.js?v=1" defer></script>
 </head>
 <body>
   <div class="intro" id="intro" role="dialog" aria-label="Terminal d'accueil" aria-live="polite" tabindex="-1">
@@ -31,7 +32,7 @@
 
   <nav class="nav" aria-label="Navigation principale">
     <div class="nav-inner">
-      <a class="nav-brand" href="#accueil">riah<span>@portfolio</span>:~$</a>
+      <a class="nav-brand" href="#accueil">riah<span>@portfolio</span>:~$<span class="nav-terminal-input" id="navTerminalInput" aria-live="polite"></span><span class="nav-terminal-cursor" aria-hidden="true"></span></a>
       <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navList" aria-label="Ouvrir le menu">☰</button>
       <ul class="nav-list" id="navList">
         <li><a href="#accueil">accueil</a></li>

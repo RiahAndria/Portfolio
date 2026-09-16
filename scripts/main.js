@@ -102,7 +102,8 @@ document.documentElement.classList.add('js');
 
     var navBrand = document.querySelector('.nav-brand');
     if (navBrand) {
-      navBrand.innerHTML = site.brand + '<span>' + site.brandSuffix + '</span>:~$';
+      navBrand.firstChild.textContent = site.brand;
+      navBrand.querySelector('span').textContent = site.brandSuffix;
     }
     document.querySelectorAll('a[href^="mailto:"]').forEach(function (link) {
       link.href = 'mailto:' + site.email;
