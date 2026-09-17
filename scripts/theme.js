@@ -1,5 +1,6 @@
 (function () {
   var storageKey = 'portfolio-visual-mode';
+  var languageStorageKey = 'portfolio-language';
   var defaultMode = {
     layout: 'classic',
     theme: getSystemThemePreference()
@@ -69,6 +70,21 @@
 
   var currentMode = applyMode(readMode(), false);
 
+  function isValidLanguage(language) {
+    return language === 'fr' || language === 'en';
+  }
+
+  function readLanguage() {
+    try {
+      var savedLanguage = window.localStorage.getItem(languageStorageKey);
+      return isValidLanguage(savedLanguage) ? savedLanguage : 'fr';
+    } catch (error) {
+      return 'fr';
+    }
+  }
+
+  var currentLanguage = readLanguage();
+
   if (window.matchMedia) {
     var mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     var handleSystemThemeChange = function (e) {
@@ -122,6 +138,27 @@
     reset: function () {
       currentMode = applyMode(defaultMode, true);
       return this.get();
+    }
+  };
+
+  window.portfolioLanguage = {
+    get: function () {
+      return currentLanguage;
+    },
+    set: function (language) {
+      if (!isValidLanguage(language)) {
+        return currentLanguage;
+      }
+
+      currentLanguage = language;
+      try {
+        window.localStorage.setItem(languageStorageKey, currentLanguage);
+      } catch (error) {
+      }
+      return currentLanguage;
+    },
+    toggle: function () {
+      return this.set(currentLanguage === 'fr' ? 'en' : 'fr');
     }
   };
 })();

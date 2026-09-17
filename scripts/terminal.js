@@ -219,8 +219,9 @@
     runCommand(rawCommand);
   });
 
-  fetch('content.json?v=' + Date.now(), { cache: 'no-store' })
+  var language = window.portfolioLanguage ? window.portfolioLanguage.get() : 'fr';
+  fetch('content/content.' + language + '.json?v=' + Date.now(), { cache: 'no-store' })
     .then(function (response) { return response.json(); })
     .then(function (content) { siteData = content; })
-    .catch(function () { addLine('Unable to load content.json.', 'terminal-error'); });
+    .catch(function () { addLine('Unable to load the selected content file.', 'terminal-error'); });
 })();

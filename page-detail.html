@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détail du projet - Gestion Médicale | Rianala M.</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        cream: '#fcfbf7',
+                        emerald: {
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            custom: '#059669'
+                        },
+                        rust: {
+                            DEFAULT: '#c2410c',
+                            light: '#ea580c'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #fcfbf7;
+            color: #1f2937;
+        }
+        /* Custom soft shadows matching the portfolio style */
+        .card-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-emerald-500 selection:text-white">
+
+    <main class="flex-grow max-w-5xl w-full mx-auto px-4 sm:px-6 py-12">
+        
+        <!-- Back Button Top -->
+        <div class="mb-8">
+            <a href="#" class="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-emerald-700 bg-white border border-gray-200 px-4 py-2 rounded-xl card-shadow transition-all hover:-translate-x-1">
+                <i class="fa-solid fa-arrow-left text-xs"></i>
+                <span>Retour aux projets</span>
+            </a>
+        </div>
+
+        <!-- Project Hero Card -->
+        <section class="bg-white rounded-3xl p-8 sm:p-10 border border-gray-200/80 card-shadow mb-10 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-emerald-50 rounded-full blur-3xl -z-10 translate-x-20 -translate-y-20 opacity-70"></div>
+            
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-6">
+                <div>
+                    <span class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-rust bg-orange-50 px-3 py-1 rounded-full mb-3 border border-orange-100">
+                        <i class="fa-solid fa-code"></i> Projet scolaire
+                    </span>
+                    <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">Gestion Médicale</h1>
+                </div>
+                
+                <a href="https://github.com" target="_blank" class="inline-flex items-center justify-center gap-2 bg-gray-900 hover:bg-gray-800 text-white font-medium px-5 py-3 rounded-xl transition shadow-md text-sm self-start md:self-auto">
+                    <i class="fa-brands fa-github text-base"></i>
+                    <span>Code source</span>
+                </a>
+            </div>
+            
+            <p class="text-gray-600 text-base sm:text-lg mb-8 leading-relaxed">
+                Application de bureau complète développée pour la gestion d'un cabinet médical. Centralise les dossiers patients, l'agenda, le suivi des consultations et la facturation avec PostgreSQL.
+            </p>
+
+            <!-- Metadata badges -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-gray-100">
+                <div class="bg-gray-50/80 p-4 rounded-2xl border border-gray-200/60">
+                    <span class="block text-xs font-medium text-gray-400 uppercase tracking-wider mb-1">Type de projet</span>
+                    <span class="text-sm font-semibold text-gray-800 flex items-center gap-2">
+                        <i class="fa-solid fa-graduation-cap text-emerald-600"></i> Scolaire
+                    </span>
+                </div>
+                <div class="bg-gray-50/80 p-4 rounded-2xl border border-gray-200/60">
+                    <span class="block text-xs font-medium text-gray-400 uppercase tracking-wider mb-1">Stack Technique</span>
+                    <span class="text-sm font-semibold text-gray-800 flex items-center gap-2">
+                        <i class="fa-solid fa-layer-group text-emerald-600"></i> C# / .NET / WPF / PostgreSQL
+                    </span>
+                </div>
+                <div class="bg-gray-50/80 p-4 rounded-2xl border border-gray-200/60">
+                    <span class="block text-xs font-medium text-gray-400 uppercase tracking-wider mb-1">Statut</span>
+                    <span class="text-sm font-semibold text-emerald-700 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> En cours / Finalisé
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Project Section -->
+        <section class="bg-white rounded-3xl p-8 sm:p-10 border border-gray-200/80 card-shadow mb-10">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-sm">
+                    <i class="fa-solid fa-circle-info"></i>
+                </span>
+                À propos du projet
+            </h2>
+
+            <div class="space-y-6 text-gray-600 leading-relaxed">
+                <div>
+                    <h3 class="text-sm font-bold uppercase tracking-wider text-gray-900 mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-align-left text-emerald-600"></i> Description générale
+                    </h3>
+                    <p class="bg-gray-50 p-4 rounded-2xl border border-gray-200/60 text-gray-700">
+                        Application de bureau développée pour la gestion complète d'un cabinet médical. Elle centralise les dossiers patients, l'agenda des médecins, un assistant de rendez-vous en 7 étapes, le suivi des consultations et des ordonnances, ainsi qu'un module de facturation avec gestion des transactions PostgreSQL.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold uppercase tracking-wider text-gray-900 mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-book-bookmark text-emerald-600"></i> Contexte académique
+                    </h3>
+                    <p class="bg-gray-50 p-4 rounded-2xl border border-gray-200/60 text-gray-700">
+                        Développé dans le cadre d'un projet universitaire en équipe (L2) visant à concevoir une application de bureau robuste avec architecture en couches, gestion des transactions et persistance des données.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold uppercase tracking-wider text-gray-900 mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-list-check text-emerald-600"></i> Fonctionnalités clés
+                    </h3>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <li class="bg-gray-50 p-3.5 rounded-2xl border border-gray-200/60 flex items-start gap-3 text-gray-700 text-sm">
+                            <i class="fa-solid fa-check text-emerald-600 mt-1"></i> Gestion unifiée des patients, médecins et dossiers médicaux
+                        </li>
+                        <li class="bg-gray-50 p-3.5 rounded-2xl border border-gray-200/60 flex items-start gap-3 text-gray-700 text-sm">
+                            <i class="fa-solid fa-check text-emerald-600 mt-1"></i> Assistant de prise de rendez-vous en 7 étapes
+                        </li>
+                        <li class="bg-gray-50 p-3.5 rounded-2xl border border-gray-200/60 flex items-start gap-3 text-gray-700 text-sm">
+                            <i class="fa-solid fa-check text-emerald-600 mt-1"></i> Suivi des consultations, diagnostics et ordonnances
+                        </li>
+                        <li class="bg-gray-50 p-3.5 rounded-2xl border border-gray-200/60 flex items-start gap-3 text-gray-700 text-sm">
+                            <i class="fa-solid fa-check text-emerald-600 mt-1"></i> Module de paiement flexible (acomptes, soldes)
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold uppercase tracking-wider text-gray-900 mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-users text-emerald-600"></i> Équipe de développement
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div class="bg-gray-50 p-3 rounded-xl border border-gray-200/60 flex items-center justify-between text-sm">
+                            <span class="font-medium text-gray-800">ANDRIAMANANJARA Rianala Masinjaka</span>
+                            <a href="#" class="text-emerald-600 hover:underline text-xs font-semibold flex items-center gap-1">GitHub <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-xl border border-gray-200/60 flex items-center justify-between text-sm">
+                            <span class="font-medium text-gray-800">ANDRIANARISOA Aina Fy Haritra</span>
+                            <a href="#" class="text-emerald-600 hover:underline text-xs font-semibold flex items-center gap-1">GitHub <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-xl border border-gray-200/60 flex items-center justify-between text-sm">
+                            <span class="font-medium text-gray-800">ANDRIANJOHANY Narindraniaina Alinot</span>
+                            <a href="#" class="text-emerald-600 hover:underline text-xs font-semibold flex items-center gap-1">GitHub <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-xl border border-gray-200/60 flex items-center justify-between text-sm">
+                            <span class="font-medium text-gray-800">ANDRIAMAHANDRY Heriniaina Marie Sylvia</span>
+                            <a href="#" class="text-emerald-600 hover:underline text-xs font-semibold flex items-center gap-1">GitHub <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Gallery Section -->
+        <section class="bg-white rounded-3xl p-8 sm:p-10 border border-gray-200/80 card-shadow mb-10">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl font-bold text-gray-900 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-sm">
+                        <i class="fa-solid fa-image"></i>
+                    </span>
+                    Captures du projet
+                </h2>
+                <span class="text-xs font-medium text-gray-400">Galerie interactive</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="group bg-gray-50 rounded-2xl p-3 border border-gray-200/80 overflow-hidden shadow-sm hover:shadow-md transition">
+                    <div class="rounded-xl overflow-hidden aspect-video bg-gray-200 mb-3 relative">
+                        <img src="https://placehold.co/600x400/e2e8f0/475569?text=Interface+Patient" alt="Capture 1" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <p class="text-sm font-semibold text-gray-800 px-1">Interface de gestion des dossiers patients</p>
+                </div>
+                <div class="group bg-gray-50 rounded-2xl p-3 border border-gray-200/80 overflow-hidden shadow-sm hover:shadow-md transition">
+                    <div class="rounded-xl overflow-hidden aspect-video bg-gray-200 mb-3 relative">
+                        <img src="https://placehold.co/600x400/e2e8f0/475569?text=Agenda+Medecin" alt="Capture 2" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <p class="text-sm font-semibold text-gray-800 px-1">Agenda et calendrier des rendez-vous</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Second Back Button at the bottom -->
+        <div class="mb-6">
+            <a href="#" class="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-emerald-700 bg-white border border-gray-200 px-5 py-3 rounded-xl card-shadow transition-all hover:-translate-x-1">
+                <i class="fa-solid fa-arrow-left text-xs"></i>
+                <span>Retour aux projets</span>
+            </a>
+        </div>
+
+    </main>
+
+    <footer class="w-full py-8 text-center text-sm text-gray-500 border-t border-gray-200/60 bg-white/50">
+        <p>© 2026 Rianala M. — Conçu avec élégance et passion.</p>
+    </footer>
+
+</body>
+</html>

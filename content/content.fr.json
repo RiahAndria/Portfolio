@@ -1,4 +1,104 @@
 {
+    "ui": {
+        "language": "fr",
+        "document": {
+            "htmlLang": "fr",
+            "description": "Portfolio de Rianala, étudiant en informatique."
+        },
+        "intro": {
+            "ariaLabel": "Terminal d'accueil",
+            "windowTitle": "terminal",
+            "status": "[ready]"
+        },
+        "navigation": {
+            "ariaLabel": "Navigation principale",
+            "home": "accueil",
+            "skills": "compétences",
+            "projects": "projets",
+            "skipToContent": "Aller au contenu",
+            "openMenu": "Ouvrir le menu",
+            "closeMenu": "Fermer le menu"
+        },
+        "settings": {
+            "open": "Ouvrir les paramètres",
+            "close": "Fermer les paramètres",
+            "title": "Paramètres",
+            "theme": "Theme",
+            "tip": "Tips: taper open pour ouvrir le terminal integré ou theme pour changer rapidement de theme (uniquement sur pc)",
+            "languageToggle": "FR / EN"
+        },
+        "themeSelector": {
+            "ariaLabel": "Choix du thème",
+            "kicker": "Bienvenue sur mon portfolio",
+            "title": "Choix du thème",
+            "root": "Root",
+            "rootDescription": "Une interface brute, immersive et technique.",
+            "zenith": "Zenith",
+            "zenithDescription": "Une présentation claire, lumineuse et organique.",
+            "eclipse": "Eclipse",
+            "eclipseDescription": "Une présentation sobre, sombre et confortable."
+        },
+        "home": {
+            "classicGreeting": "Bonjour, moi c'est Riah !",
+            "skillGroups": {
+                "languages": "Langages",
+                "tooling": "Outils",
+                "frameworks": "Frameworks",
+                "databases": "Bases de données"
+            },
+            "profileCardLabel": "Résumé du profil",
+            "profileSchool": "Établissement",
+            "profileSpecialty": "Spécialité",
+            "profileFocus": "Focus",
+            "profileFocusValue": "Conception logicielle",
+            "profileStatus": "Disponible pour stages et projets",
+            "skillsAriaLabel": "Configuration des compétences",
+            "skillsWindow": "skills.config",
+            "loaded": "[loaded]",
+            "preview": "preview",
+            "projectsDesktop": "Développement desktop",
+            "projectsWeb": "Développement web",
+            "projectLink": "--code",
+            "projectCardLabel": "Voir le projet {title}"
+        },
+        "terminal": {
+            "windowLabel": "Terminal interactif",
+            "exit": "Retour au portfolio",
+            "welcome": "Welcome to riah@portfolio.",
+            "helpHint": "Type help to list available commands.",
+            "commandLabel": "Commande terminal",
+            "loading": "Loading portfolio data...",
+            "permissionDenied": "Permission denied.",
+            "unknownCommand": "Command not found: {command}. Type \"help\" for available commands.",
+            "missingFile": "cat: {file}: No such file",
+            "help": "Available commands:\n  help       Show this list\n  clear      Clear the terminal\n  ls         List the current directory\n  cd         Navigate through portfolio sections and projects\n  cat        Display a portfolio file as JSON\n  whoami     Display the current profile\n  easter egg Reveal hidden commands\n  open       Return to the portfolio terminal prompt\n  exit       Return to the portfolio",
+            "easterEgg": "Hidden commands:\n  sudo hire me\n  sudo rm -rf/\n  sudo make me a sandwich\n  git push origin main --force\n  sudo apt install creativity"
+        },
+        "projectPage": {
+            "github": "--github",
+            "source": "Code source",
+            "type": "Type de projet",
+            "stack": "Stack technique",
+            "status": "En cours",
+            "descriptionGeneral": "Description générale",
+            "context": "Contexte académique",
+            "features": "Fonctionnalités clés",
+            "contributors": "Équipe de développement",
+            "about": "À propos du projet",
+            "gallery": "Captures du projet",
+            "refresh": "Rejouer l'animation du terminal",
+            "back": "< retour aux projets",
+            "galleryPreview": "gallery / preview",
+            "emptyImage": "Image à ajouter",
+            "emptyCapture": "Capture à ajouter",
+            "emptyDatabase": "Capture de la base de données à ajouter"
+        },
+        "errors": {
+            "contentTitle": "Erreur de contenu",
+            "contentMessage": "Le fichier de contenu est vide ou invalide. Corrigez-le puis rechargez la page.",
+            "galleryImages": "Images à ajouter depuis le fichier de contenu"
+        }
+    },
 	"site": {
 		"title": "Portfolio — Riah",
 		"brand": "riah",

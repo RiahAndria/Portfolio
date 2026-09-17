@@ -345,6 +345,37 @@ p { margin: 0; }
   font: inherit;
   text-align: left;
 }
+.settings-language {
+  width: 100%;
+  margin-top: 8px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg-panel-hover);
+}
+.settings-language-option {
+  padding: 7px 10px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-dim);
+  cursor: pointer;
+  font: inherit;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+.settings-language-option:hover,
+.settings-language-option:focus-visible { color: var(--highlight); }
+.settings-language-option.is-active {
+  background: var(--bg-panel);
+  color: var(--highlight);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+}
+.settings-language-option:focus-visible { outline: 2px solid var(--highlight); outline-offset: 1px; }
 .settings-theme:hover,
 .settings-theme:focus-visible { border-color: var(--highlight); color: var(--highlight); }
 .settings-tip {

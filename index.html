@@ -12,10 +12,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="stylesheet" href="styles/main.css?v=2">
   <link rel="stylesheet" href="styles/themes/theme-tokens.css">
-  <link rel="stylesheet" href="styles/themes/classic.css">
+  <link rel="stylesheet" href="styles/themes/classic.css?v=2">
   <link rel="stylesheet" href="styles/themes/theme-selector.css?v=4">
   <script src="scripts/theme-selector.js?v=3" defer></script>
-  <script src="scripts/main.js?v=4" defer></script>
+  <script src="scripts/main.js?v=9" defer></script>
   <script src="scripts/terminal-animations.js?v=2" defer></script>
   <script src="scripts/terminal-header.js?v=1" defer></script>
 </head>
@@ -53,6 +53,10 @@
           </button>
           <div class="settings-panel" id="settingsPanel" hidden>
             <button class="settings-theme" id="settingsTheme" type="button">Theme</button>
+            <div class="settings-language" id="settingsLanguage" role="radiogroup" aria-label="Langue">
+              <button class="settings-language-option" type="button" role="radio" data-language="fr" aria-checked="true">FR</button>
+              <button class="settings-language-option" type="button" role="radio" data-language="en" aria-checked="false">EN</button>
+            </div>
             <p class="settings-tip">Tips: taper open pour ouvrir le terminal integré ou theme pour changer rapidement de theme (uniquement sur pc)</p>
           </div>
         </div>

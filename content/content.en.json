@@ -1,0 +1,295 @@
+{
+    "ui": {
+        "language": "en",
+        "document": {
+            "htmlLang": "en",
+            "description": "Portfolio of Rianala, computer science student."
+        },
+        "intro": {
+            "ariaLabel": "Welcome terminal",
+            "windowTitle": "terminal",
+            "status": "[ready]"
+        },
+        "navigation": {
+            "ariaLabel": "Main navigation",
+            "home": "home",
+            "skills": "skills",
+            "projects": "projects",
+            "skipToContent": "Skip to content",
+            "openMenu": "Open menu",
+            "closeMenu": "Close menu"
+        },
+        "settings": {
+            "open": "Open settings",
+            "close": "Close settings",
+            "title": "Settings",
+            "theme": "Theme",
+            "tip": "Tip: type open to launch the built-in terminal or theme to quickly change theme (desktop only)",
+            "languageToggle": "EN / FR"
+        },
+        "themeSelector": {
+            "ariaLabel": "Theme selection",
+            "kicker": "Welcome to my portfolio",
+            "title": "Theme selection",
+            "root": "Root",
+            "rootDescription": "A raw, immersive, and technical interface.",
+            "zenith": "Zenith",
+            "zenithDescription": "A clean, bright, and organic layout.",
+            "eclipse": "Eclipse",
+            "eclipseDescription": "A sleek, dark, and comfortable design."
+        },
+        "home": {
+            "classicGreeting": "Hello, I'm Riah!",
+            "skillGroups": {
+                "languages": "Languages",
+                "tooling": "Tools",
+                "frameworks": "Frameworks",
+                "databases": "Databases"
+            },
+            "profileCardLabel": "Profile summary",
+            "profileSchool": "Institution",
+            "profileSpecialty": "Specialties",
+            "profileFocus": "Focus",
+            "profileFocusValue": "Software design",
+            "profileStatus": "Available for internships and projects",
+            "skillsAriaLabel": "Skills configuration",
+            "skillsWindow": "skills.config",
+            "loaded": "[loaded]",
+            "preview": "preview",
+            "projectsDesktop": "Desktop Development",
+            "projectsWeb": "Web Development",
+            "projectLink": "--code",
+            "projectCardLabel": "View project {title}"
+        },
+        "terminal": {
+            "windowLabel": "Interactive terminal",
+            "exit": "Back to portfolio",
+            "welcome": "Welcome to riah@portfolio.",
+            "helpHint": "Type help to list available commands.",
+            "commandLabel": "Terminal command",
+            "loading": "Loading portfolio data...",
+            "permissionDenied": "Permission denied.",
+            "unknownCommand": "Command not found: {command}. Type \"help\" for available commands.",
+            "missingFile": "cat: {file}: No such file",
+            "help": "Available commands:\n  help       Show this list\n  clear      Clear the terminal\n  ls         List the current directory\n  cd         Navigate through portfolio sections and projects\n  cat        Display a portfolio file as JSON\n  whoami     Display the current profile\n  easter egg Reveal hidden commands\n  open       Return to the portfolio terminal prompt\n  exit       Return to the portfolio",
+            "easterEgg": "Hidden commands:\n  sudo hire me\n  sudo rm -rf/\n  sudo make me a sandwich\n  git push origin main --force\n  sudo apt install creativity"
+        },
+        "projectPage": {
+            "github": "--github",
+            "source": "Source code",
+            "type": "Project type",
+            "stack": "Technical stack",
+            "status": "In progress",
+            "descriptionGeneral": "General description",
+            "context": "Academic context",
+            "features": "Key features",
+            "contributors": "Development team",
+            "about": "About the project",
+            "gallery": "Project screenshots",
+            "refresh": "Replay terminal animation",
+            "back": "< back to projects",
+            "galleryPreview": "gallery / preview",
+            "emptyImage": "Image to add",
+            "emptyCapture": "Screenshot to add",
+            "emptyDatabase": "Database screenshot to add"
+        },
+        "errors": {
+            "contentTitle": "Content Error",
+            "contentMessage": "The content file is empty or invalid. Please fix it and reload the page.",
+            "galleryImages": "Images to add from the content file"
+        }
+    },
+    "site": {
+        "title": "Portfolio — Riah",
+        "brand": "riah",
+        "brandSuffix": "@portfolio",
+        "email": "riahandria@outlook.fr",
+        "github": "https://github.com/RiahAndria",
+        "linkedin": "https://www.linkedin.com/in/rianala-masinjaka-andriamananjara-78260a437/",
+        "year": 2026,
+        "owner": "Rianala",
+        "introPrompt": "user@portfolio:~$",
+        "introWelcome": "welcome",
+        "introCommand": "sudo whoami"
+    },
+    "home": {
+        "hero": {
+            "command": "$ sudo whoami",
+            "name": "ANDRIAMANANJARA Rianala Masinjaka",
+            "role": "Computer Science Student — Software Engineering & Information Systems",
+            "schoolCommand": "$ cat education.txt",
+            "school": "National School of Computer Science (ENI) Fianarantsoa",
+            "level": "Software Engineering & Information Systems — 2nd Year (L2)",
+            "bio": "Hi, I'm Rianala, but you can call me Riah. I'm passionate about software development and database design, building desktop and web applications from data modeling to user interface.",
+            "heroImages": [
+                "assets/bg-hero/bdd.png",
+                "assets/bg-hero/code1.png",
+                "assets/bg-hero/code2.png"
+            ]
+        },
+        "skills": {
+            "title": "Skills",
+            "description": "Languages, tools, and technologies used.",
+            "profile": "software_developer",
+            "languages": ["C#", "Java", "JavaScript", "HTML", "CSS", "C", "C++", "Python", "SQL", "PHP"],
+            "tooling": ["VS Code", "GitHub", "Figma", "Maven"],
+            "databases": ["PostgreSQL", "SQLite"],
+            "frameworks": [".NET", "WPF", "Qt", "Vue.js", "Laravel"],
+            "comment": "built with curiosity and caffeine",
+            "previewImage": "assets/Gestion-finances/stat.png",
+            "previewLabel": "financial-management"
+        },
+        "projects": {
+            "title": "Projects",
+            "description": "Selected projects completed during my studies or independently.",
+            "groups": [
+                { "title": "Desktop Development" },
+                { "title": "Web Development" }
+            ]
+        }
+    },
+    "projects": {
+        "gestion-medicale": {
+            "title": "Medical Management",
+            "meta": "Academic Project — C# / WPF — PostgreSQL",
+            "type": "school_project",
+            "stack": "C# + .NET + WPF + PostgreSQL + Dapper",
+            "status": "in_progress",
+            "context": "Developed as part of a university team project (L2) aimed at designing a robust desktop application with layered architecture, transaction management, and data persistence.",
+            "description": "Desktop application developed for comprehensive medical practice management. It centralizes patient records, doctor schedules, a 7-step appointment wizard, consultation and prescription tracking, as well as a billing module with PostgreSQL transaction management.",
+            "features": [
+                "Unified management of patients, doctors, and medical records",
+                "7-step appointment booking wizard (anti-double booking)",
+                "Tracking of consultations, diagnoses, and prescription issuance",
+                "Flexible payment module (down payments, balances, and invoicing)",
+                "Secure architecture with SQL transactions and persistence via Dapper"
+            ],
+            "contributors": [
+                { "name": "ANDRIAMANANJARA Rianala Masinjaka", "github": "https://github.com/RiahAndria" },
+                { "name": "ANDRIANARISOA Aina Fy Haritra", "github": "https://github.com/haritra7159-bit" },
+                { "name": "ANDRIANJOHANY Narindraniaina Alinot", "github": "https://github.com/alinotandrianjohany-sys" },
+                { "name": "ANDRIAMAHANDRY Heriniaina Marie Sylvia", "github": "https://github.com/sylviaandriamahandry-maker" }
+            ],
+            "preview": "assets/Gestion-Patients/dossier.png",
+            "gallery": [
+                { "image": "assets/Gestion-Patients/dossier.png", "caption": "Medical Record" },
+                { "image": "assets/Gestion-Patients/patient.png", "caption": "Patient Management" },
+                { "image": "assets/Gestion-Patients/medecin.png", "caption": "Doctor Management" },
+                { "image": "assets/Gestion-Patients/rdv.png", "caption": "Appointment Management" },
+                { "image": "assets/Gestion-Patients/bdd.png", "caption": "Database" }
+            ],
+            "link": [
+                { "url": "https://github.com/RiahAndria/gestionPatient.git" }
+            ]
+        },
+        "gestion-financiere": {
+            "title": "Financial Management",
+            "meta": "Personal Project — C# / WPF — SQLite",
+            "type": "school_project",
+            "stack": "C# + .NET + WPF + SQLite + ClosedXML + QuestPDF",
+            "status": "in_progress",
+            "context": "Developed at the request of a user seeking a tool for household financial management, complete with daily flow tracking and analytical charts to adjust spending habits.",
+            "description": "Personal financial management desktop application. It allows users to track cash flow, organize transactions through a hierarchy of categories, analyze monthly/annual trends, and natively interact with Excel and PDF files.",
+            "features": [
+                "Unified tracking of income and expenses with modification history",
+                "Hierarchical categorization of transactions by categories and subcategories",
+                "Statistical analysis of financial evolution by month and year",
+                "Data import and export in Excel format (ClosedXML)",
+                "Generation of professional financial reports in PDF format (QuestPDF)",
+                "Secure and autonomous local storage via SQLite database"
+            ],
+            "contributors": [
+                { "name": "ANDRIAMANANJARA Rianala Masinjaka", "github": "https://github.com/RiahAndria" }
+            ],
+            "preview": "assets/Gestion-finances/stat.png",
+            "gallery": [
+                { "image": "assets/Gestion-finances/ajout.png", "caption": "Transaction Entry Form" },
+                { "image": "assets/Gestion-finances/hyst.png", "caption": "Action History" },
+                { "image": "assets/Gestion-finances/overview.png", "caption": "Categories Overview" },
+                { "image": "assets/Gestion-finances/stat.png", "caption": "Analytics & Charts" },
+                { "image": "assets/Gestion-finances/rap.png", "caption": "PDF Report Export" }
+            ],
+            "link": [
+                { "url": "https://github.com/haritra7159-bit/Gestion-Session-CEPE.git" }
+            ]
+        },
+        "gestion-session-cepe": {
+            "title": "CEPE Session Management",
+            "meta": "Academic Project — Java / JavaFX / Maven — PostgreSQL",
+            "type": "school_project",
+            "stack": "Java + JavaFX + PostgreSQL",
+            "status": "in_progress",
+            "description": "Application for managing candidate registration and session organization for an official school examination.",
+            "preview": "",
+            "gallery": [],
+            "link": [
+                { "url": "https://github.com/haritra7159-bit/Gestion-Session-CEPE.git" }
+            ]
+        },
+        "gestion-enseignants": {
+            "title": "Teacher Management",
+            "meta": "Academic Project — Vue.js / PHP — PostgreSQL",
+            "type": "school_project",
+            "stack": "Vue.js 3 + Vite + PHP + PDO + PostgreSQL + Chart.js",
+            "status": "in_progress",
+            "context": "Developed as part of a university SPA project aiming to design a modern web application with a decoupled frontend/backend architecture, complete with full authentication and dynamic calculations.",
+            "description": "Single Page Application (SPA) for administrative management of teachers. It centralizes profile details, automatically calculates pay based on hourly rates and worked hours, and visualizes data through interactive statistical charts.",
+            "features": [
+                "Secure authentication with bcrypt hashing, session management, and admin approval",
+                "Summary dashboard featuring key performance indicators and overall metrics",
+                "Add/edit form with dynamic live previews of pay calculations",
+                "Full teacher profile management (multi-criteria search, data tables, deletion confirmations)",
+                "Report and analytics module with integrated charts via Chart.js and vue-chartjs",
+                "Decoupled architecture between a Vue.js frontend and a PHP/PDO backend API connected to PostgreSQL"
+            ],
+            "contributors": [
+                { "name": "ANDRIAMANANJARA Rianala Masinjaka", "github": "https://github.com/RiahAndria" },
+                { "name": "ANDRIANARISOA Aina Fy Haritra", "github": "https://github.com/haritra7159-bit" }
+            ],
+            "preview": "assets/gestion-enseignants/accueil.png",
+            "gallery": [
+                { "video": "assets/gestion-enseignants/vid-demo.mp4", "caption": "App Login Demo" },
+                { "image": "assets/gestion-enseignants/login.png", "caption": "Authentication" },
+                { "image": "assets/gestion-enseignants/accueil.png", "caption": "Home Page & Dashboard" },
+                { "image": "assets/gestion-enseignants/ajout.png", "caption": "Add Teacher Form" },
+                { "image": "assets/gestion-enseignants/liste.png", "caption": "Teacher List" },
+                { "image": "assets/gestion-enseignants/stat1.png", "caption": "Reports & Analytics" },
+                { "image": "assets/gestion-enseignants/stat2.png", "caption": "Additional Charts & Data" }
+            ],
+            "link": [
+                { "url": "https://github.com/RiahAndria/pjt_vuejs.git" }
+            ]
+        },
+        "gestion-soutenances": {
+            "title": "Thesis Defense Management",
+            "meta": "Academic Project — PHP / Laravel — PostgreSQL",
+            "type": "school_project",
+            "stack": "PHP + Laravel + Blade + FPDF + PostgreSQL",
+            "status": "in_progress",
+            "context": "Created for a practical exam and academic evaluation, designed to build a complete web application with Laravel that fulfills a real-world administrative management need.",
+            "description": "MVC web application for academic management designed to centralize student, faculty, host organization, and evaluation board records. It automates defense scheduling and official PDF report generation.",
+            "features": [
+                "Centralization of student, teacher, and host organization profiles",
+                "Defense scheduling with board assignment, grading, and academic year tracking",
+                "Automated official report (PV) generation via FPDF",
+                "Replaces fragmented manual tracking with a unified, traceable web interface",
+                "Classic MVC architecture on Laravel with database migrations and relational ORM"
+            ],
+            "contributors": [
+                { "name": "ANDRIAMANANJARA Rianala Masinjaka", "github": "https://github.com/RiahAndria" },
+                { "name": "ANDRIANARISOA Aina Fy Haritra", "github": "https://github.com/haritra7159-bit" }
+            ],
+            "preview": "assets/gestion-soutenance/dashboard.png",
+            "gallery": [
+                { "image": "assets/gestion-soutenance/dashboard.png", "caption": "Dashboard" },
+                { "image": "assets/gestion-soutenance/etudiant.png", "caption": "Student Management" },
+                { "image": "assets/gestion-soutenance/professeurs.png", "caption": "Teacher Management" },
+                { "image": "assets/gestion-soutenance/pv.png", "caption": "Defense Report (PV)" },
+                { "image": "assets/gestion-soutenance/soutenance.png", "caption": "Defense Scheduling" }
+            ],
+            "link": [
+                { "url": "https://github.com/RiahAndria/pjt_php.git" }
+            ]
+        }
+    }
+}

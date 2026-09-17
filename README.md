@@ -12,14 +12,15 @@ Le portfolio est structuré autour d'une page principale, `index.html`, qui sert
 - une navigation interne légère,
 - des éléments visuels en style terminal (couleurs, fenêtres, accents, transitions).
 
-Le contenu visible est principalement alimenté par `content.json`. Ce fichier centralise les textes, liens, images et métadonnées de chaque projet, ce qui permet de modifier le contenu sans réécrire tout le HTML à chaque changement.
+Le contenu visible est principalement alimenté par `content/content.fr.json`. Ce fichier centralise les textes, liens, images et métadonnées de chaque projet, ce qui permet de modifier le contenu sans réécrire tout le HTML à chaque changement.
 
 ## Organisation du projet
 
 ```text
 .
 ├── index.html
-├── content.json
+├── content/
+│   └── content.fr.json
 ├── styles/
 │   ├── main.css
 │   └── themes/
@@ -52,7 +53,7 @@ Le contenu visible est principalement alimenté par `content.json`. Ce fichier c
 
 ### 1. La page d’accueil
 
-`index.html` est la page principale du portfolio. Elle charge les données depuis `content.json` via JavaScript, puis affiche :
+`index.html` est la page principale du portfolio. Elle charge les données françaises depuis `content/content.fr.json` via JavaScript, puis affiche :
 
 - le titre et le texte de présentation,
 - les compétences clés,
@@ -73,7 +74,7 @@ Ces pages de détail servent à présenter :
 
 ### 3. Les données centralisées
 
-Les textes et informations du portfolio sont stockés dans `content.json`. Cela permet de garder une séparation claire entre :
+Les textes et informations du portfolio sont stockés dans `content/content.fr.json`. Cela permet de garder une séparation claire entre :
 
 - le contenu éditorial,
 - la structure HTML,

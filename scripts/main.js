@@ -34,19 +34,32 @@ document.documentElement.classList.add('js');
     });
 
     if (!images.length) {
-      gallery.innerHTML = '<div class="project-shot">Images a ajouter depuis content.json</div><div class="project-shot">Capture a ajouter</div><div class="project-shot">Capture a ajouter</div>';
+      gallery.innerHTML = '<div class="project-shot">Images à ajouter depuis le fichier de contenu</div><div class="project-shot">Capture à ajouter</div><div class="project-shot">Capture à ajouter</div>';
     }
   }
 
-  function renderProjectDetails(projectDescription, project) {
+  function renderProjectDetails(projectDescription, project, ui) {
     projectDescription.querySelectorAll('.project-extra').forEach(function (element) {
       element.remove();
     });
+
+    var isClassicLayout = document.documentElement.dataset.layout === 'classic';
+
+    if (isClassicLayout && ui && ui.projectPage) {
+      var descriptionHeading = document.createElement('h3');
+      descriptionHeading.className = 'project-description-heading';
+      descriptionHeading.textContent = ui.projectPage.descriptionGeneral;
+      projectDescription.querySelector('p').before(descriptionHeading);
+    }
 
     if (project.context) {
       var context = document.createElement('div');
       context.className = 'project-extra project-context';
       context.innerHTML = '<span class="project-extra-command">$ cat context.txt</span>';
+      if (isClassicLayout && ui && ui.projectPage) {
+        context.dataset.classicTitle = ui.projectPage.context;
+        context.insertAdjacentHTML('afterbegin', '<h3 class="project-classic-heading">' + ui.projectPage.context + '</h3>');
+      }
       var contextText = document.createElement('p');
       contextText.textContent = project.context;
       context.appendChild(contextText);
@@ -57,6 +70,10 @@ document.documentElement.classList.add('js');
       var features = document.createElement('div');
       features.className = 'project-extra project-features';
       features.innerHTML = '<span class="project-extra-command">$ ls features/</span>';
+      if (isClassicLayout && ui && ui.projectPage) {
+        features.dataset.classicTitle = ui.projectPage.features;
+        features.insertAdjacentHTML('afterbegin', '<h3 class="project-classic-heading">' + ui.projectPage.features + '</h3>');
+      }
       var featureList = document.createElement('ul');
       project.features.forEach(function (feature) {
         var featureItem = document.createElement('li');
@@ -71,6 +88,10 @@ document.documentElement.classList.add('js');
       var contributors = document.createElement('div');
       contributors.className = 'project-extra project-contributors';
       contributors.innerHTML = '<span class="project-extra-command">$ cat contributors.txt</span>';
+      if (isClassicLayout && ui && ui.projectPage) {
+        contributors.dataset.classicTitle = ui.projectPage.contributors;
+        contributors.insertAdjacentHTML('afterbegin', '<h3 class="project-classic-heading">' + ui.projectPage.contributors + '</h3>');
+      }
       var contributorList = document.createElement('ul');
       project.contributors.forEach(function (contributor) {
         var contributorItem = document.createElement('li');
@@ -93,12 +114,75 @@ document.documentElement.classList.add('js');
     }
   }
 
+  function applyUiContent(ui) {
+    if (!ui) {
+      return;
+    }
+
+    document.documentElement.lang = ui.document.htmlLang;
+    var descriptionMeta = document.querySelector('meta[name="description"]');
+    if (descriptionMeta) {
+      descriptionMeta.content = ui.document.description;
+    }
+    var projectPage = ui.projectPage;
+    if (projectPage) {
+      var projectDescriptionTitle = document.querySelector('.project-description-title');
+      var projectGalleryTitle = document.querySelector('.project-page-section h2');
+      var projectRefresh = document.querySelector('.project-refresh');
+      var projectBack = document.querySelector('.project-back');
+      var projectGithub = document.querySelector('.project-page-actions .flag-link');
+      if (projectDescriptionTitle) projectDescriptionTitle.textContent = projectPage.about;
+      if (projectGalleryTitle) projectGalleryTitle.textContent = projectPage.gallery;
+      if (projectRefresh) projectRefresh.setAttribute('aria-label', projectPage.refresh);
+      if (projectBack) projectBack.textContent = projectPage.back;
+      if (projectGithub) {
+        projectGithub.textContent = document.documentElement.dataset.layout === 'classic'
+          ? (projectPage.source || projectPage.github)
+          : projectPage.github;
+      }
+    }
+    if (!document.querySelector('.nav')) {
+      return;
+    }
+    document.querySelector('.skip-link').textContent = ui.navigation.skipToContent;
+    document.querySelector('.nav').setAttribute('aria-label', ui.navigation.ariaLabel);
+    document.querySelector('.nav-list a[href="#accueil"]').textContent = ui.navigation.home;
+    document.querySelector('.nav-list a[href="#competences"]').textContent = ui.navigation.skills;
+    document.querySelector('.nav-list a[href="#projets"]').textContent = ui.navigation.projects;
+    document.getElementById('navToggle').setAttribute('aria-label', ui.navigation.openMenu);
+    document.getElementById('settingsToggle').setAttribute('aria-label', ui.settings.open);
+    document.getElementById('settingsToggle').title = ui.settings.title;
+    document.getElementById('settingsTheme').textContent = ui.settings.theme;
+    var languageControl = document.getElementById('settingsLanguage');
+    if (languageControl) {
+      languageControl.setAttribute('aria-label', ui.settings.languageToggle);
+      var currentLanguage = window.portfolioLanguage ? window.portfolioLanguage.get() : 'fr';
+      languageControl.querySelectorAll('[data-language]').forEach(function (option) {
+        var isActive = option.dataset.language === currentLanguage;
+        option.setAttribute('aria-checked', String(isActive));
+        option.classList.toggle('is-active', isActive);
+      });
+    }
+    document.querySelector('.settings-tip').textContent = ui.settings.tip;
+    document.getElementById('intro').setAttribute('aria-label', ui.intro.ariaLabel);
+    document.querySelector('.classic-profile-card').setAttribute('aria-label', ui.home.profileCardLabel);
+    document.querySelector('.classic-profile-school').previousElementSibling.textContent = ui.home.profileSchool;
+    document.querySelector('.classic-profile-level').previousElementSibling.textContent = ui.home.profileSpecialty;
+    document.querySelector('.classic-profile-details div:nth-child(3) dt').textContent = ui.home.profileFocus;
+    document.querySelector('.classic-profile-details div:nth-child(3) dd').textContent = ui.home.profileFocusValue;
+    document.querySelector('.classic-profile-status').innerHTML = '<span></span> ' + ui.home.profileStatus;
+    document.querySelector('.skills-config').setAttribute('aria-label', ui.home.skillsAriaLabel);
+    document.querySelector('.config-window-bar > span:nth-child(2)').textContent = ui.home.skillsWindow;
+    document.querySelector('.config-window-bar .config-status').textContent = ui.home.loaded;
+  }
+
   function hydrateContent(content) {
     var site = content.site;
     var projectId = document.body.dataset.project;
     var project = projectId ? content.projects[projectId] : null;
 
     document.title = project ? project.title + ' - Portfolio' : site.title;
+    applyUiContent(content.ui);
 
     var navBrand = document.querySelector('.nav-brand');
     if (navBrand) {
@@ -123,6 +207,47 @@ document.documentElement.classList.add('js');
       document.querySelector('.project-page-kicker').textContent = '$ project --open ' + projectId;
       document.querySelector('.project-page h1').textContent = project.title;
       document.querySelector('.project-page-meta').textContent = project.meta;
+      if (document.documentElement.dataset.layout === 'classic') {
+        var projectContainer = document.querySelector('.project-page > .container');
+        if (!projectContainer.querySelector('.classic-project-back')) {
+          var topBack = document.createElement('a');
+          topBack.className = 'classic-project-back';
+          topBack.href = '../../index.html#projets';
+          topBack.innerHTML = '<i class="fa-solid fa-arrow-left" aria-hidden="true"></i><span>' + content.ui.projectPage.back.replace(/^<\s*/, '') + '</span>';
+          projectContainer.insertBefore(topBack, projectContainer.firstElementChild);
+        }
+
+        var existingSummary = projectContainer.querySelector('.classic-project-summary');
+        if (existingSummary) {
+          existingSummary.remove();
+        }
+        var summary = document.createElement('p');
+        summary.className = 'classic-project-summary';
+        summary.textContent = project.description;
+        document.querySelector('.project-page-meta').after(summary);
+
+        document.querySelector('.project-page-kicker').textContent = project.type === 'school_project'
+          ? 'Projet scolaire'
+          : project.type;
+
+        var existingBadges = document.querySelector('.classic-project-badges');
+        if (existingBadges) {
+          existingBadges.remove();
+        }
+        var badges = document.createElement('div');
+        badges.className = 'classic-project-badges';
+        [
+          { icon: 'fa-graduation-cap', label: content.ui.projectPage.type, value: project.type === 'school_project' ? content.ui.projectPage.type.replace(/^Type de projet$/, 'Scolaire') : project.meta.split(' — ')[0] },
+          { label: content.ui.projectPage.stack, value: project.stack },
+          { icon: 'fa-circle-check', label: content.ui.projectPage.status, value: content.ui.projectPage.status }
+        ].forEach(function (item) {
+          var badge = document.createElement('div');
+          badge.className = 'classic-project-badge';
+          badge.innerHTML = '<small>' + item.label + '</small><strong>' + (item.icon ? '<i class="fa-solid ' + item.icon + '" aria-hidden="true"></i> ' : '') + item.value + '</strong>';
+          badges.appendChild(badge);
+        });
+        summary.after(badges);
+      }
       var projectGithub = project.link && project.link[0] ? project.link[0].url : '';
       var projectGithubLink = document.querySelector('.project-page-actions .flag-link');
       if (projectGithubLink && projectGithub) {
@@ -131,7 +256,7 @@ document.documentElement.classList.add('js');
       document.querySelector('.project-readout').innerHTML = '<span>type = "' + project.type + '"</span><span>stack = "' + project.stack + '"</span><span>status = "' + project.status + '"</span>';
       var projectDescription = document.querySelector('.project-description');
       projectDescription.querySelector('p').textContent = project.description;
-      renderProjectDetails(projectDescription, project);
+      renderProjectDetails(projectDescription, project, content.ui);
       renderGallery(document.querySelector('.project-gallery'), project.gallery);
       return;
     }
@@ -139,7 +264,7 @@ document.documentElement.classList.add('js');
     var hero = content.home.hero;
     var isClassicLayout = document.documentElement.dataset.layout === 'classic';
     document.querySelector('.hero-kicker').firstChild.textContent = hero.command;
-    document.querySelector('.hero h1').textContent = isClassicLayout ? "Bonjour, moi c'est Riah !" : hero.name;
+    document.querySelector('.hero h1').textContent = isClassicLayout ? content.ui.home.classicGreeting : hero.name;
     document.querySelector('.hero-role').textContent = hero.role;
     document.querySelector('.hero-school .prompt').textContent = hero.schoolCommand;
     document.querySelector('.hero-school .out:nth-of-type(2)').innerHTML = '&gt; <b>' + hero.school + '</b>';
@@ -165,10 +290,10 @@ document.documentElement.classList.add('js');
     document.querySelector('.config-value').textContent = '"' + skills.profile + '"';
     var configValues = document.querySelectorAll('.config-list');
     var skillGroups = [
-      { key: 'Langages', terminalKey: 'languages', values: skills.languages },
-      { key: 'Outils', terminalKey: 'tooling', values: skills.tooling },
-      { key: 'Frameworks', terminalKey: 'frameworks', values: skills.frameworks },
-      { key: 'Bases de données', terminalKey: 'databases', values: skills.databases }
+      { key: content.ui.home.skillGroups.languages, terminalKey: 'languages', values: skills.languages },
+      { key: content.ui.home.skillGroups.tooling, terminalKey: 'tooling', values: skills.tooling },
+      { key: content.ui.home.skillGroups.frameworks, terminalKey: 'frameworks', values: skills.frameworks },
+      { key: content.ui.home.skillGroups.databases, terminalKey: 'databases', values: skills.databases }
     ];
     skillGroups.forEach(function (group, index) {
       var line = configValues[index].closest('.config-line');
@@ -184,10 +309,12 @@ document.documentElement.classList.add('js');
       if (isClassicLayout) {
         line.dataset.skillCount = String(group.values.length);
         line.dataset.skillKey = group.key;
+        line.dataset.skillId = group.terminalKey;
         line.style.setProperty('--skill-span', group.values.length >= 5 ? '2' : '1');
       } else {
         line.removeAttribute('data-skill-count');
         line.removeAttribute('data-skill-key');
+        line.removeAttribute('data-skill-id');
         line.style.removeProperty('--skill-span');
       }
     });
@@ -203,7 +330,7 @@ document.documentElement.classList.add('js');
       var id = card.dataset.detail.split('/').pop().replace('.html', '');
       var item = content.projects[id];
       if (!item) return;
-      card.setAttribute('aria-label', 'Voir le projet ' + item.title);
+      card.setAttribute('aria-label', content.ui.home.projectCardLabel.replace('{title}', item.title));
       card.querySelector('h4').textContent = item.title;
       card.querySelector('.project-status').textContent = item.meta;
       var cardGithubLink = card.querySelector('.project-links a');
@@ -376,6 +503,7 @@ document.documentElement.classList.add('js');
   var settingsToggle = document.getElementById('settingsToggle');
   var settingsPanel = document.getElementById('settingsPanel');
   var settingsTheme = document.getElementById('settingsTheme');
+  var settingsLanguage = document.getElementById('settingsLanguage');
 
   if (toggle && navList) {
     toggle.addEventListener('click', function () {
@@ -424,6 +552,18 @@ document.documentElement.classList.add('js');
         settingsPanel.hidden = true;
         settingsToggle.setAttribute('aria-expanded', 'false');
       }
+    });
+  }
+
+  if (settingsLanguage) {
+    settingsLanguage.querySelectorAll('[data-language]').forEach(function (option) {
+      option.addEventListener('click', function () {
+        if (!window.portfolioLanguage || option.dataset.language === window.portfolioLanguage.get()) {
+          return;
+        }
+        window.portfolioLanguage.set(option.dataset.language);
+        window.location.reload();
+      });
     });
   }
 
@@ -642,12 +782,13 @@ document.documentElement.classList.add('js');
   });
   }
 
-  var contentUrl = document.body.dataset.project ? '../../content.json' : 'content.json';
+  var language = window.portfolioLanguage ? window.portfolioLanguage.get() : 'fr';
+  var contentUrl = (document.body.dataset.project ? '../../content/content.' : 'content/content.') + language + '.json';
 
   fetch(contentUrl + '?v=' + Date.now(), { cache: 'no-store' })
     .then(function (response) {
       if (!response.ok) {
-        throw new Error('Unable to load content.json');
+        throw new Error('Unable to load ' + contentUrl);
       }
       return response.json();
     })
@@ -665,6 +806,6 @@ document.documentElement.classList.add('js');
         introElement.remove();
       }
       document.body.classList.add('content-load-error');
-      document.querySelector('main').innerHTML = '<div class="content-error"><h1>Erreur de contenu</h1><p>Le fichier content.json est vide ou invalide. Corrigez-le puis rechargez la page.</p></div>';
+      document.querySelector('main').innerHTML = '<div class="content-error"><h1>Erreur de contenu</h1><p>Le fichier de contenu est vide ou invalide. Corrigez-le puis rechargez la page.</p></div>';
     });
 })();
