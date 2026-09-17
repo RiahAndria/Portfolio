@@ -31,6 +31,11 @@
       if (command.trim().toLowerCase() === 'open') {
         window.location.href = 'terminal.html';
       }
+      if (command.trim().toLowerCase() === 'theme' && window.portfolioThemeSelector) {
+        window.portfolioThemeSelector.open();
+      }
+      command = '';
+      prompt.textContent = '';
       return;
     }
 

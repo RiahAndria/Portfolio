@@ -5,15 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio — Rianala</title>
   <meta name="description" content="Portfolio de Rianala, étudiant en informatique.">
+  <script src="scripts/theme.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="styles/main.css?v=2">
+  <link rel="stylesheet" href="styles/themes/theme-tokens.css">
+  <link rel="stylesheet" href="styles/themes/classic.css">
+  <link rel="stylesheet" href="styles/themes/theme-selector.css?v=4">
+  <script src="scripts/theme-selector.js?v=3" defer></script>
   <script src="scripts/main.js?v=4" defer></script>
   <script src="scripts/terminal-animations.js?v=2" defer></script>
   <script src="scripts/terminal-header.js?v=1" defer></script>
 </head>
 <body>
+  <div id="themeSelectorMount"></div>
   <div class="intro" id="intro" role="dialog" aria-label="Terminal d'accueil" aria-live="polite" tabindex="-1">
     <div class="intro-terminal">
       <div class="intro-window-bar">
@@ -34,38 +41,65 @@
     <div class="nav-inner">
       <a class="nav-brand" href="#accueil">riah<span>@portfolio</span>:~$<span class="nav-terminal-input" id="navTerminalInput" aria-live="polite"></span><span class="nav-terminal-cursor" aria-hidden="true"></span></a>
       <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navList" aria-label="Ouvrir le menu">☰</button>
-      <ul class="nav-list" id="navList">
-        <li><a href="#accueil">accueil</a></li>
-        <li><a href="#competences">compétences</a></li>
-        <li><a href="#projets">projets</a></li>
-      </ul>
+      <div class="nav-controls">
+        <ul class="nav-list" id="navList">
+          <li><a href="#accueil">accueil</a></li>
+          <li><a href="#competences">compétences</a></li>
+          <li><a href="#projets">projets</a></li>
+        </ul>
+        <div class="settings-menu">
+          <button class="settings-toggle" id="settingsToggle" type="button" aria-expanded="false" aria-controls="settingsPanel" aria-label="Ouvrir les paramètres" title="Paramètres">
+            <i class="fa-solid fa-gear" aria-hidden="true"></i>
+          </button>
+          <div class="settings-panel" id="settingsPanel" hidden>
+            <button class="settings-theme" id="settingsTheme" type="button">Theme</button>
+            <p class="settings-tip">Tips: taper open pour ouvrir le terminal integré ou theme pour changer rapidement de theme (uniquement sur pc)</p>
+          </div>
+        </div>
+      </div>
     </div>
   </nav>
 
   <main>
     <section id="accueil" class="hero">
-      <div class="container hero-inner">
-        <p class="hero-kicker">$ sudo whoami<span class="cursor-blink">&nbsp;</span></p>
-        <h1>ANDRIAMANANJARA Rianala Masinjaka</h1>
-        <p class="hero-role">Étudiant en informatique — Ingéniérie Logicielle &amp; Systèmes d'Information</p>
+      <div class="container hero-layout">
+        <div class="hero-inner">
+          <p class="hero-kicker">$ sudo whoami<span class="cursor-blink">&nbsp;</span></p>
+          <h1>ANDRIAMANJARA Rianala Masinjaka</h1>
+          <p class="hero-role">Étudiant en informatique — Ingéniérie Logicielle &amp; Systèmes d'Information</p>
 
-        <div class="hero-school">
-          <span class="line prompt">$ cat formation.txt</span>
-          <span class="line out">&gt; <b>Ecole Nationale d'Informatique (ENI) Fianarantsoa</b></span>
-          <span class="line out">&gt; Ingéniérie Logicielle &amp; Systèmes d'Information — L2</span>
+          <div class="hero-school">
+            <span class="line prompt">$ cat formation.txt</span>
+            <span class="line out">&gt; <b>Ecole Nationale d'Informatique (ENI) Fianarantsoa</b></span>
+            <span class="line out">&gt; Ingéniérie Logicielle &amp; Systèmes d'Information — L2</span>
+          </div>
+
+          <p class="hero-bio">
+            Passionné par le développement logiciel et la conception de bases de données,
+            je construis des applications desktop et web, de la modélisation des données
+            jusqu'à l'interface utilisateur. Complète cette présentation avec tes propres mots.
+          </p>
+
+          <div class="hero-links">
+            <a class="flag-link" href="mailto:riahandria@outlook.fr"><span>--mail</span><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>
+            <a class="flag-link" href="https://github.com/RiahAndria" target="_blank" rel="noopener"><span>--github</span><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+            <a class="flag-link" href="https://www.linkedin.com/in/rianala-masinjaka-andriamananjara-78260a437" target="_blank" rel="noopener"><span>--linkedin</span><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+          </div>
         </div>
 
-        <p class="hero-bio">
-          Passionné par le développement logiciel et la conception de bases de données,
-          je construis des applications desktop et web, de la modélisation des données
-          jusqu'à l'interface utilisateur. Complète cette présentation avec tes propres mots.
-        </p>
-
-        <div class="hero-links">
-          <a class="flag-link" href="mailto:riahandria@outlook.fr">--mail riahandria@outlook.fr</a>
-          <a class="flag-link" href="https://github.com/RiahAndria" target="_blank" rel="noopener">--github Riah M.</a>
-          <a class="flag-link" href="https://www.linkedin.com/in/rianala-masinjaka-andriamananjara-78260a437" target="_blank" rel="noopener">--linkedin Rianala ANDRIAMANANJARA</a>
-        </div>
+        <aside class="classic-profile-card" aria-label="Résumé du profil">
+          <div class="classic-profile-avatar" aria-hidden="true"></div>
+          <div class="classic-profile-heading">
+            <h2 class="classic-profile-name">ANDRIAMANJARA Rianala Masinjaka</h2>
+            <p class="classic-profile-role">Développeur logiciel junior</p>
+          </div>
+          <dl class="classic-profile-details">
+            <div><dt>Établissement</dt><dd class="classic-profile-school">ENI Fianarantsoa</dd></div>
+            <div><dt>Spécialité</dt><dd class="classic-profile-level">ILSI (L2)</dd></div>
+            <div><dt>Focus</dt><dd>Conception logicielle</dd></div>
+          </dl>
+          <p class="classic-profile-status"><span></span> Disponible pour stages et projets</p>
+        </aside>
       </div>
       <div class="hero-gallery" data-images="assets/bg-hero/bdd.png,assets/bg-hero/code1.png,assets/bg-hero/code2.png" aria-hidden="true">
         <div class="hero-image-pane hero-image-pane--left"><img class="hero-image-current" src="assets/bg-hero/bdd.png" alt=""><img class="hero-image-next" src="assets/bg-hero/bdd.png" alt=""></div>

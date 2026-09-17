@@ -1,0 +1,22 @@
+:root {
+  --theme-page-bg: var(--bg);
+  --theme-surface: var(--bg-panel);
+  --theme-surface-hover: var(--bg-panel-hover);
+  --theme-border: var(--border);
+  --theme-text: var(--text);
+  --theme-text-muted: var(--text-dim);
+  --theme-accent: var(--accent);
+  --theme-highlight: var(--highlight);
+}
+
+html[data-layout="terminal"] {
+  --theme-font-heading: var(--font-mono);
+  --theme-font-body: var(--font-sans);
+  --theme-motion-enter: cubic-bezier(.2, .75, .25, 1);
+}
+
+html[data-layout="classic"] {
+  --theme-font-heading: 'DM Sans', ui-sans-serif, sans-serif;
+  --theme-font-body: 'Source Sans 3', ui-sans-serif, sans-serif;
+  --theme-motion-enter: cubic-bezier(.22, 1, .36, 1);
+}

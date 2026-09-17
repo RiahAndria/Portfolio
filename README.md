@@ -21,10 +21,15 @@ Le contenu visible est principalement alimenté par `content.json`. Ce fichier c
 ├── index.html
 ├── content.json
 ├── styles/
-│   └── main.css
+│   ├── main.css
+│   └── themes/
+│       ├── theme-tokens.css
+│       ├── classic.css
+│       └── README.md
 ├── scripts/
 │   ├── main.js
-│   └── terminal-animations.js
+│   ├── terminal-animations.js
+│   └── theme.js
 ├── assets/
 │   ├── bg-hero/
 │   ├── gestion-enseignants/
@@ -109,3 +114,12 @@ Le portfolio fonctionne comme une application web statique, pensée comme une vi
 - des interactions JavaScript pour enrichir l’expérience utilisateur.
 
 L’ensemble donne un rendu cohérent, moderne et professionnel, tout en restant simple à maintenir et à faire évoluer.
+
+## Fondation des modes visuels
+
+Le portefeuille expose maintenant deux dimensions indépendantes pour sa future évolution visuelle :
+
+- `data-layout="terminal"` ou `data-layout="classic"` pour changer la structure et le langage d'interaction ;
+- `data-theme="light"` ou `data-theme="dark"` pour changer la palette et le contraste.
+
+Le fichier `scripts/theme.js` applique et persiste le mode sélectionné via `localStorage`. L'API `window.portfolioTheme` permet déjà de lire, modifier ou réinitialiser ce mode depuis un futur sélecteur. Le mode `terminal/dark` reste le défaut afin de préserver l'interface actuelle.

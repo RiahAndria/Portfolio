@@ -137,13 +137,22 @@ document.documentElement.classList.add('js');
     }
 
     var hero = content.home.hero;
+    var isClassicLayout = document.documentElement.dataset.layout === 'classic';
     document.querySelector('.hero-kicker').firstChild.textContent = hero.command;
-    document.querySelector('.hero h1').textContent = hero.name;
+    document.querySelector('.hero h1').textContent = isClassicLayout ? "Bonjour, moi c'est Riah !" : hero.name;
     document.querySelector('.hero-role').textContent = hero.role;
     document.querySelector('.hero-school .prompt').textContent = hero.schoolCommand;
     document.querySelector('.hero-school .out:nth-of-type(2)').innerHTML = '&gt; <b>' + hero.school + '</b>';
-    document.querySelector('.hero-school .out:nth-of-type(3)').textContent = '&gt; ' + hero.level;
+    document.querySelector('.hero-school .out:nth-of-type(3)').textContent = '> ' + hero.level;
     document.querySelector('.hero-bio').textContent = hero.bio;
+    var profileName = document.querySelector('.classic-profile-name');
+    var profileRole = document.querySelector('.classic-profile-role');
+    var profileSchool = document.querySelector('.classic-profile-school');
+    var profileLevel = document.querySelector('.classic-profile-level');
+    if (profileName) profileName.textContent = isClassicLayout ? hero.name : hero.name.replace(/^[^ ]+\s+/, '');
+    if (profileRole) profileRole.textContent = hero.role;
+    if (profileSchool) profileSchool.textContent = hero.school.replace(/^Ecole Nationale d'Informatique \(ENI\) /, 'ENI ');
+    if (profileLevel) profileLevel.textContent = hero.level.replace(/Ingéniérie Logicielle & Systèmes d'Information/, 'ILSI');
     document.querySelector('.hero-gallery').dataset.images = hero.heroImages.join(',');
     document.querySelector('.hero-image-pane--left .hero-image-current').src = hero.heroImages[0];
     document.querySelector('.hero-image-pane--left .hero-image-next').src = hero.heroImages[0];
@@ -155,8 +164,32 @@ document.documentElement.classList.add('js');
     document.querySelector('#competences .section-head p').textContent = skills.description;
     document.querySelector('.config-value').textContent = '"' + skills.profile + '"';
     var configValues = document.querySelectorAll('.config-list');
-    [skills.languages, skills.tooling, skills.databases, skills.frameworks].forEach(function (values, index) {
-      configValues[index].innerHTML = '[' + values.map(function (value) { return '<span>' + value + '</span>'; }).join(', ') + ']';
+    var skillGroups = [
+      { key: 'Langages', terminalKey: 'languages', values: skills.languages },
+      { key: 'Outils', terminalKey: 'tooling', values: skills.tooling },
+      { key: 'Frameworks', terminalKey: 'frameworks', values: skills.frameworks },
+      { key: 'Bases de données', terminalKey: 'databases', values: skills.databases }
+    ];
+    skillGroups.forEach(function (group, index) {
+      var line = configValues[index].closest('.config-line');
+      var skillMarkup = group.values.map(function (value) {
+        var item = document.createElement('span');
+        item.textContent = value;
+        return item.outerHTML;
+      }).join(isClassicLayout ? '' : ', ');
+
+      configValues[index].innerHTML = isClassicLayout ? skillMarkup : '[' + skillMarkup + ']';
+      line.querySelector('.config-key').textContent = isClassicLayout ? group.key : group.terminalKey;
+
+      if (isClassicLayout) {
+        line.dataset.skillCount = String(group.values.length);
+        line.dataset.skillKey = group.key;
+        line.style.setProperty('--skill-span', group.values.length >= 5 ? '2' : '1');
+      } else {
+        line.removeAttribute('data-skill-count');
+        line.removeAttribute('data-skill-key');
+        line.style.removeProperty('--skill-span');
+      }
     });
     document.querySelector('.config-comment > span:last-child').textContent = skills.comment;
     document.querySelector('.config-preview img').src = skills.previewImage;
@@ -297,8 +330,9 @@ document.documentElement.classList.add('js');
 
   var returningProject = window.sessionStorage.getItem('portfolio-return-project');
   var skipIntro = window.location.hash === '#projets' || Boolean(returningProject);
+  var disableIntro = skipIntro || document.documentElement.dataset.layout === 'classic';
 
-  if (intro && skipIntro) {
+  if (intro && disableIntro) {
     intro.remove();
     intro = null;
   }
@@ -339,6 +373,9 @@ document.documentElement.classList.add('js');
 
   var toggle = document.getElementById('navToggle');
   var navList = document.getElementById('navList');
+  var settingsToggle = document.getElementById('settingsToggle');
+  var settingsPanel = document.getElementById('settingsPanel');
+  var settingsTheme = document.getElementById('settingsTheme');
 
   if (toggle && navList) {
     toggle.addEventListener('click', function () {
@@ -353,6 +390,40 @@ document.documentElement.classList.add('js');
         toggle.setAttribute('aria-expanded', 'false');
         toggle.setAttribute('aria-label', 'Ouvrir le menu');
       });
+    });
+  }
+
+  if (settingsToggle && settingsPanel) {
+    settingsToggle.addEventListener('click', function () {
+      var isOpen = !settingsPanel.hidden;
+      settingsPanel.hidden = isOpen;
+      settingsToggle.setAttribute('aria-expanded', String(!isOpen));
+    });
+
+    document.addEventListener('click', function (event) {
+      if (!event.target.closest('.settings-menu')) {
+        settingsPanel.hidden = true;
+        settingsToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        settingsPanel.hidden = true;
+        settingsToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  if (settingsTheme) {
+    settingsTheme.addEventListener('click', function () {
+      if (window.portfolioThemeSelector) {
+        window.portfolioThemeSelector.open();
+      }
+      if (settingsPanel && settingsToggle) {
+        settingsPanel.hidden = true;
+        settingsToggle.setAttribute('aria-expanded', 'false');
+      }
     });
   }
 
