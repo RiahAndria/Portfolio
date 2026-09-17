@@ -24,8 +24,22 @@
             "close": "Close settings",
             "title": "Settings",
             "theme": "Theme",
-            "tip": "Tip: type open to launch the built-in terminal or theme to quickly change theme (desktop only)",
-            "languageToggle": "EN / FR"
+            "tip": "Hint: Type command to see the list of commands. (Pc only)",
+            "languageToggle": "EN / FR",
+            "commandGuide": {
+                "title": "Available shortcuts",
+                "close": "Close",
+                "intro": "Type a command in the menu prompt to quickly access portfolio features.",
+                "commands": [
+                    { "name": "command", "description": "Show this command list" },
+                    { "name": "open", "description": "Open the built-in terminal" },
+                    { "name": "theme-<01|02|03>", "description": "Choose Root, Zenith, or Eclipse" },
+                    { "name": "lang-<fr|en>", "description": "Change the language" },
+                    { "name": "home", "description": "Go to the home section" },
+                    { "name": "skill", "description": "Go to skills" },
+                    { "name": "pjts", "description": "Go to projects" }
+                ]
+            }
         },
         "themeSelector": {
             "ariaLabel": "Theme selection",
@@ -118,7 +132,7 @@
             "name": "ANDRIAMANANJARA Rianala Masinjaka",
             "role": "Computer Science Student — Software Engineering & Information Systems",
             "schoolCommand": "$ cat education.txt",
-            "school": "National School of Computer Science (ENI) Fianarantsoa",
+            "school": "Ecole Nationale d'Informatique (ENI) Fianarantsoa",
             "level": "Software Engineering & Information Systems — 2nd Year (L2)",
             "bio": "Hi, I'm Rianala, but you can call me Riah. I'm passionate about software development and database design, building desktop and web applications from data modeling to user interface.",
             "heroImages": [

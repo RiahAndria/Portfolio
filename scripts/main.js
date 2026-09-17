@@ -163,6 +163,25 @@ document.documentElement.classList.add('js');
         option.classList.toggle('is-active', isActive);
       });
     }
+    var commandGuideContent = ui.settings.commandGuide;
+    var commandGuide = document.getElementById('commandGuide');
+    if (commandGuide && commandGuideContent) {
+      document.getElementById('commandGuideTitle').textContent = commandGuideContent.title;
+      document.getElementById('commandGuideClose').setAttribute('aria-label', commandGuideContent.close);
+      document.getElementById('commandGuideIntro').textContent = commandGuideContent.intro;
+      var commandGuideList = document.getElementById('commandGuideList');
+      commandGuideList.innerHTML = '';
+      commandGuideContent.commands.forEach(function (item) {
+        var listItem = document.createElement('li');
+        var commandName = document.createElement('code');
+        var commandDescription = document.createElement('span');
+        commandName.textContent = item.name;
+        commandDescription.textContent = item.description;
+        listItem.appendChild(commandName);
+        listItem.appendChild(commandDescription);
+        commandGuideList.appendChild(listItem);
+      });
+    }
     document.querySelector('.settings-tip').textContent = ui.settings.tip;
     document.getElementById('intro').setAttribute('aria-label', ui.intro.ariaLabel);
     document.querySelector('.classic-profile-card').setAttribute('aria-label', ui.home.profileCardLabel);
@@ -662,7 +681,7 @@ document.documentElement.classList.add('js');
 
     card.addEventListener('click', openProject);
     card.addEventListener('keydown', function (event) {
-      if (event.key === 'Enter' || event.key === ' ') {
+      if (event.key === 'Enter') {
         event.preventDefault();
         navigateToProject();
       }

@@ -24,8 +24,22 @@
             "close": "Fermer les paramètres",
             "title": "Paramètres",
             "theme": "Theme",
-            "tip": "Tips: taper open pour ouvrir le terminal integré ou theme pour changer rapidement de theme (uniquement sur pc)",
-            "languageToggle": "FR / EN"
+            "tip": "Hint: Taper command pour voir la liste des commandes. (Pc uniquement)",
+            "languageToggle": "FR / EN",
+            "commandGuide": {
+                "title": "Raccourcis disponibles",
+                "close": "Fermer",
+                "intro": "Tapez une commande dans l'invite du menu pour accéder rapidement aux fonctions du portfolio.",
+                "commands": [
+                    { "name": "command", "description": "Afficher cette liste de commandes" },
+                    { "name": "open", "description": "Ouvrir le terminal intégré" },
+                    { "name": "theme-<01|02|03>", "description": "Choisir Root, Zenith ou Eclipse" },
+                    { "name": "lang-<fr|en>", "description": "Changer la langue" },
+                    { "name": "home", "description": "Aller à l'accueil" },
+                    { "name": "skill", "description": "Aller aux compétences" },
+                    { "name": "pjts", "description": "Aller aux projets" }
+                ]
+            }
         },
         "themeSelector": {
             "ariaLabel": "Choix du thème",
