@@ -1,6 +1,27 @@
 ﻿# Portfolio
 
-Ce projet est un portfolio personnel en HTML, CSS et JavaScript, conçu comme une interface immersive inspirée d'un terminal informatique. L'objectif est de présenter les projets réalisés dans un style visuel cohérent, sombre et technique, avec des éléments interactifs et une navigation fluide.
+Portfolio personnel de **Rianala Masinjaka Andriamanjara**, étudiant en informatique à l'École Nationale d'Informatique (ENI) de Fianarantsoa. Le site présente des projets de développement logiciel et de systèmes d'information dans une interface web inspirée d'un terminal.
+
+## Aperçu
+
+Le portfolio est une application web statique réalisée avec :
+
+- HTML5 pour la structure des pages ;
+- CSS3 pour le design, les thèmes et les animations ;
+- JavaScript natif pour le contenu dynamique, la navigation, le terminal interactif et le sélecteur de thème ;
+- JSON pour centraliser les contenus français et anglais.
+
+## Utilisation
+
+Le projet ne nécessite aucune dépendance npm. Pour éviter les restrictions du navigateur sur le chargement des fichiers JSON, servez le dossier avec un serveur HTTP local :
+
+```bash
+python -m http.server 8000
+```
+
+Puis ouvrez [http://localhost:8000](http://localhost:8000) dans votre navigateur.
+
+L'ouverture directe de `index.html` peut fonctionner pour l'affichage statique, mais le serveur local est recommandé pour le chargement des contenus et les interactions complètes.
 
 ## Fonctionnement général
 
@@ -32,6 +53,7 @@ Le contenu visible est principalement alimenté par `content/content.fr.json`. C
 │   ├── terminal-animations.js
 │   └── theme.js
 ├── assets/
+│   ├── favicon/
 │   ├── bg-hero/
 │   ├── gestion-enseignants/
 │   ├── Gestion-finances/
@@ -115,6 +137,14 @@ Le portfolio fonctionne comme une application web statique, pensée comme une vi
 - des interactions JavaScript pour enrichir l’expérience utilisateur.
 
 L’ensemble donne un rendu cohérent, moderne et professionnel, tout en restant simple à maintenir et à faire évoluer.
+
+## Licence
+
+Ce projet est distribué sous licence [MIT](LICENCE). Voir le fichier `LICENCE` pour le texte complet de la licence.
+
+## Attribution
+
+L'icône utilisée pour le favicon provient de Flaticon : [Agence icônes créées par ADMS ICons - Flaticon](https://www.flaticon.com/fr/icones-gratuites/agence).
 
 ## Fondation des modes visuels
 
